@@ -1,0 +1,106 @@
+accessible: true
+author: Nathan Tihon
+categories: []
+contact_url: ''
+context: |-
+    Ceci est un exercice permettant de vous familiariser avec les pipelines et l'utilisation de l'opérateur ``|``.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Les pipelines
+network_grading: false
+problems:
+    Q1:
+        type: multiple_choice
+        name: ''
+        header: 'Vous voulez savoir combien de caractères se trouvent dans la phrase
+            : "Je souhaite connaître la longueur de cette phrase.", quelle(s) commande(s)
+            tapez-vous ?'
+        multiple: true
+        limit: 0
+        success_message: Bien joué, c'est exactement ça.
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    echo "Je souhaite connaître la longueur de cette phrase." | wc -c
+            feedback: Ce choix est correct, il est à noter que le nombre qui sera
+                affiché sera toujours 1 plus grand que la valeur réelle, ceci est
+                du au fait que les chaines de caractères se terminent par un "nullbyte",
+                invisible pour nous mais crucial pour l'ordinateur. La phrase donnée
+                est de longueur 51 mais la commande renvoie bien 52.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    "Je souhaite connaître la longueur de cette phrase." | wc -c
+            feedback: C'est incorrect, l'opérateur ``|`` permet de rediriger les *commandes*.
+                Or la chaine de caractère fournie n'est pas une commande.
+        -   text: |-
+                .. code:: console
+
+                    wc -c | echo "Je souhaite connaître la longueur de cette phrase."
+            feedback: Ceci est incorrect, la redirection fonctionne de gauche à droite,
+                le résultat de la commande à gauche de ``|`` sera redirigé dans la
+                commande à sa droite.
+    Q2:
+        type: multiple_choice
+        name: ''
+        header: Imaginez que vous cherchiez un fichier ``file``, vous pensez qu'il
+            se trouve dans le répertoire ``Dir`` mais vous n'en êtes pas sûr. Le problème
+            est que ce répertoire contient de nombreux sous-répertoires ! Comment
+            vous-y prendriez vous pour trouver ce fichier ?
+        multiple: true
+        limit: 0
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    ls -R Dir | grep -e "file"
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    find Dir -name "file"
+            feedback: Cette réponse était un peu piégeuse dans le sens où elle ne
+                nécéssite pas l'utilisation de pipeline. Comme quoi il faut toujours
+                regarder si il y'a d'autres moyens plus faciles de faire !
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    ls -R Dir | grep -v "file"
+            feedback: Ceci est incorrect, il vous donnera exactement l'inverse de
+                ce que vous cherchez !
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

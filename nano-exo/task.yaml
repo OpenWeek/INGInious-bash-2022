@@ -1,0 +1,33 @@
+accessible: true
+author: Buchet Aurélien, Huet Anatole
+categories:
+- simple
+contact_url: ''
+context: |-
+    Cet exercice a pour but de vous familiariser avec les éditeurs de texte en ligne de commande.
+
+    La commande ``vi`` vous permet d'ouvrir un éditeur de texte pour modifier des fichiers. Le répertoire student contient un fichier text.txt dans lequel se cache une faute. Utilisez Vi pour éditer le fichier et corriger l'erreur. Une fois l'éditeur ouvert, appuyez sur ``i`` pour entrer en mode insertion. Une fois que vous avez modifié le texte, appuyez sur ``esc`` pour revenir en mode commande. Pour enregister, utilisez ``:w`` et pour sortir ``:q``. Vous pouvez également directement utiliser ``:wq`` pour enregister et quitter.
+
+    Pour plus d'information, la page du manuel est disponible en anglais via https://man7.org/linux/man-pages/man1/vi.1p.html et en français via https://man.cx/vi
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '1000'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utiliser un éditeur de texte
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

@@ -1,0 +1,40 @@
+accessible: true
+author: HUET Anatole
+categories: []
+contact_url: ''
+context: |-
+    Pour rappel, voici les redirections utiles : https://sites.uclouvain.be/SyllabusC/notes/Outils/shell.html#redirection-de-l-entree-sortie-et-erreur-standard
+
+    Pour réliser cet exercice, placez-vous de le dossier ``student/``
+
+    Oh non ! Vous êtes arrivé en retard à votre cours préféré sur Bash. Heureusement, brillant cerveau que vous êtes, vous réussisez à avoir accès à la liste des présences (le fichier ``presences``). Il ne manque plus qu'à rajouter votre prénom en utilisant une redirection et sans supprimer le noms des autres étudiants.
+
+
+    Ensuite, à l'aide de la commande ``echo`` et d'une autre redirection créer un fichier ``retardataires`` et rajoutez un nom.
+
+
+    Oh non ! Vous avez attiré l'attention du professeur ! Pour vous punir, il décide de vous faire recopier 5 fois le fichier ``mot_excuse`` sur votre terminal. Mais grâce à la commande ``cat`` et une redirection, vous pouvez tricher pour tous les afficher en une commande.
+
+    C'est la fin du cours maintenant, vous pouvez sortir de la classe.
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Exercices sur les redirections
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

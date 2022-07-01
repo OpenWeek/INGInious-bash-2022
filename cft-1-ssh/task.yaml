@@ -1,0 +1,74 @@
+accessible: true
+author: Olivier Bonaventure, Emery Assogba
+categories:
+- medium
+- interactif
+contact_url: ''
+context: |-
+    Cet exercice avancé vous aidera à vous habituer plus en profondeur aux différentes commandes que vous avez apprises de façon ludiques.
+
+    **Prenez du plaisir à le faire!!!**
+
+    Instructions
+    ------------
+
+    Suivez les instructions ci-dessous.
+
+    #. Chaque fois que vous vous retrouvez sans mission, tapez ``./.suite`` n'essayez pas de deviner ce qu'il faut faire, ``./.suite`` n'est pas un indice mais un appel au narrateur obligatoire pour le bon déroulement de l'histoire.
+
+    #. Durant ce CTF vous allez utiliser certaines commandes, à de nombreuses reprises, vous devrez chercher vous-même leur fonctionnement. Pour cela, lisez les manpages de ces commandes via la commande "man nomDeLUtilitaireSansLesParenthèses" ou bien vous pouvez consultez le manuel en anglais sur `https://man7.org/linux/man-pages/index.html <https://man7.org/linux/man-pages/index.html>`_ et en français sur `https://man.cx/ <https://man.cx/>`_.
+
+    Enoncé
+    ------
+
+    Attendant toujours les résultats de votre examen de Concepts des langages informatiques, vous décidez de prendre les devants et d'aller les demander vous-même au Professeur Peter Van Roy. Vous savez que les bureaux des professeurs se trouvent dans le batiment Réaumur, bordant la place Sainte-Barbe. Vous vous y rendez donc. Pour cela cliquez sur ``Soumettre`` pour avoir les crédentials d'accès au serveur. Ouvrez une console et connectez-vous. Placez vous dans le dossier ``student/Reaumur`` et tapez ``./.suite`` pour avoir la suite.
+
+
+    Suivez les instructions jusqu'à obtenir le ``flag``.
+
+    Cliquez sur ``Soumettre`` pour démarrer.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '6000'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Capture the Flag 1
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

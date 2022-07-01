@@ -1,0 +1,73 @@
+accessible: true
+author: Nathan Tihon, Emery Assogba
+categories:
+- interactif
+- medium
+contact_url: ''
+context: |-
+    Vous avez un projet d'informatique à rendre pour la semaine prochaine, ce projet est à fournir dans une archive avec une structure bien spécifique dont vous n'aviez pas connaissance jusqu'à maintenant.
+
+    Le format attendu de l'archive est celui-ci :
+
+    .. code:: bash
+
+        projet.tar
+        |         |--c-files
+        |         |         | Contient tous les fichiers ``.c``
+        |         |--python-files
+        |         |              | Contient tous les fichiers ``.py``
+        |         |--README.txt
+        |         |--Makefile
+
+    Mais lors du développement de votre projet, vous avez sauvegardé des fichiers temporaires (des petits tests de quelques lignes, des résultats intermédiaires, ...) qu'il ne faut évidemment pas laisser dans la soumission que vous ferez aux professeurs. Ayant prévu le coup, vous avez préfixé le nom de ces fichiers de ``tmp`` (par exemple ``tmpABCDE.py``).
+
+    Vous devrez utiliser plusieurs commandes que vous avez pu voir durant ce cours. Pour avoir des informations sur les commandes, n'oubliez pas que vous pouvez toujours visiter les man pages en `français <https://man.cx>`_ et en `anglais <https://man7.org/linux/man-pages/>`_.
+
+    Malheureusement, vous êtes actuellement chez un ami et n'avez pas accès à votre ordinateur. Il vous faudra donc vous connecter à distance par ``ssh`` et vous déplacer dans le répertoire ``student`` à votre machine pour régler ce problème.
+
+    Cliquer sur le bouton ``Soumettre`` pour démarrer l'exercice.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '100'
+        hard_time: '300'
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Structure de projets
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

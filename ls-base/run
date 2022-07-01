@@ -1,0 +1,38 @@
+#!/bin/bash
+ssh_student --setup-script "python3 student/scripts/start.py"
+
+commands=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2  )
+
+# Extended regex searching for any of "ls -al", "ls -la", "ls -a", "ls -a -l" or "ls -l -a", same for the second one
+q1=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2 | grep -E "ls ((-[a|l] *){2}|-a|-[a|l]{2})")
+q2=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2 | grep -E "ls ((-[t|l] *){2}|-t|-[t|l]{2})")
+logs=$(cat /task/student/.ssh_logs)
+
+if [[ "$q1" = "" ]];then
+	rst-msgblock --class warning --message "Vous n'avez pas réussi la première question. Relisez bien le manuel `` https://man7.org/linux/man-pages/man1/ls.1.html <https://man7.org/linux/man-pages/man1/ls.1.html>_`` et en français via ``https://man.cx/ls(1)/fr <https://man.cx/ls(1)/fr>_ ``. Une option de ls permet de répondre à la question"  | feedback-msg -a
+fi
+
+if [[ "$q2" = "" ]];then
+	rst-msgblock --class warning --message "Vous n'avez pas réussi la seconde question. Relisez bien le manuel `` https://man7.org/linux/man-pages/man1/ls.1.html <https://man7.org/linux/man-pages/man1/ls.1.html>_`` et en français via ``https://man.cx/ls(1)/fr <https://man.cx/ls(1)/fr>_ ``. Une option de ls permet de répondre à la question"  | feedback-msg -a
+fi
+
+
+if [[ "$q1" = "" && "$q2" = ""   ]]; then
+	feedback-result failed
+    feedback-grade 0
+    rst-msgblock --class info --message "Vous n'avez répondu à aucune question"  | feedback-msg -a
+    exit
+fi
+
+if [[ "$q1" = "" && "$q2" != "" ]] || [[ "$q1" != "" && "$q2" = "" ]]; then
+	feedback-result failed
+    feedback-grade 50
+	rst-msgblock --class info --message "Vous n'avez pas répondu à toutes les questions"  | feedback-msg -a
+    exit
+fi
+
+if [[ "$q1" != "" && "$q2" != "" ]]; then
+	feedback-result success
+    feedback-grade 100
+    rst-msgblock --class info --message "Vous avez répondu à toutes les questions !"  | feedback-msg -a
+fi

@@ -1,0 +1,14 @@
+#!/bin/bash
+ssh_student
+
+if grep -q "ls -[ahSl][ahSl][ahSl][ahSl]" /task/student/.ssh_logs; then 
+	feedback-result success
+else
+	if grep -q "ls " /task/student/.ssh_logs; then
+		rst-msgblock -c info -m "Wrong arguments" | feedback-msg -ae
+		feedback-result failed
+    else
+		rst-msgblock -c info -m "Wrong command" | feedback-msg -ae
+        feedback-result failed
+    fi
+fi

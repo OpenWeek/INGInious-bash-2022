@@ -1,0 +1,27 @@
+accessible: true
+author: ''
+categories:
+- simple
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``flock`` permet gérer les verrous sur un fichier ou un réperoire. Vous avez un répertoire contenant des fichiers et des sous répertoires.
+
+    #. Pouvez-vous verouiller le fichier ``secret.py`` en utilisant la commande ``flock`` puis essayer de l'ouvrir en utilisant la commande ``cat``?
+
+
+    Tapez ``man flock`` pour accéder à la page de manuel de cette commande. Elle est aussi disponible en anglais via `https://man7.org/linux/man-pages/man1/flock.1.html <https://man7.org/linux/man-pages/man1/flock.1.html>`_
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: La commande flock
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

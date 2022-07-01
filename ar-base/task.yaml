@@ -1,0 +1,193 @@
+accessible: true
+author: Emery Assogba
+categories:
+- simple
+- qcm
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``tar`` permet de créer, de modifier ou d'extraire des archives . Vous avez un répertoire qui contient 5 fichiers:
+
+     - ``etudiants.txt``
+     - ``ratatouille.mp4``
+     - ``rapport.pdf``
+     - ``cours.doc``
+     - ``resultats.xls``
+
+
+    Tapez ``man tar`` pour accéder à la page de manuel de cette commande. Elle est aussi disponible en anglais via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_ et en français via `https://man.cx/tar <https://man.cx/tar>`_
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de la commande tar
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: Quelle commande utilisez vous pour créer l'archive ``archive.tar``
+            de ces 5 fichiers?
+        limit: 0
+        success_message: Félicitation. Vous pouvez aussi consulter la page de manuel
+            pour plus de détails sur la commande ``tar``. Elle est disponible en anglais
+            via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_
+            et en français via `https://man.cx/tar <https://man.cx/tar>`_
+        error_message: Vous pouvez faire mieux en consultant la page de manuel pour
+            plus de détails sur la commande ``tar``. Elle est disponible en anglais
+            via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_
+            et en français via `https://man.cx/tar <https://man.cx/tar>`_
+        choices:
+        -   text: |-
+                .. code:: bash
+
+                    tar archive.tar etudiants.txt ratatouille.mp4 rapport.pdf cours.doc resultats.xls
+            feedback: 'Vous devez préciser des options afin de créer l''archive. Veuillez
+                suivre les instructions ci-dessus '
+        -   text: |-
+                .. code:: bash
+
+                    tar -cf archive.tar etudiants.txt ratatouille.mp4 rapport.pdf cours.doc resultats.xls
+            feedback: Bonne réponse
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    tar -c archive.tar etudiants.txt ratatouille.mp4 rapport.pdf cours.doc resultats.xls
+            feedback: 'Bien que l''option -c permette de créer une archive, ``tar``
+                a besoin qu''on lui précise le fichier de destination avec l''option
+                -f. Veuillez suivre les instructions ci-dessus. '
+        -   text: |-
+                .. code:: bash
+
+                    tar -f archive.tar etudiants.txt ratatouille.mp4 rapport.pdf cours.doc resultats.xls
+            feedback: 'Bien que l''option -f permette de préciser le nom du fichier
+                de sortie, ``tar`` a besoin de l''option -c pour savoir qu''il doit
+                créer l''archive. Veuillez suivre les instructions ci-dessus. '
+    q2:
+        type: multiple_choice
+        name: ''
+        header: Maintenant que vous avez créé l'archive ``archive.tar``, quelle commande
+            utiliserez-vous pour supprimer le fichier ``ratatouille.mp4`` de l'archive
+            ``archive.tar``
+        multiple: true
+        limit: 0
+        success_message: Félicitation. Vous pouvez aussi consulter la page de manuel
+            pour plus de détail sur la commande ``tar``. Elle est disponible en anglais
+            via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_
+            et en français via `https://man.cx/tar <https://man.cx/tar>`_
+        error_message: Vous pouvez faire mieux en consultant la page de manuel pour
+            plus de détail sur la commande ``tar``. Elle est disponible en anglais
+            via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_
+            et en français via `https://man.cx/tar <https://man.cx/tar>`_
+        choices:
+        -   text: |-
+                .. code:: bash
+
+                    tar --delete --file archive.tar ratatouille.mp4
+            feedback: Bonne réponse. L'option ``--delete``, permet de supprimer un
+                élément de l'archive et l'option ``--file`` permet de préciser le
+                nom de l'archive.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    tar -df archive.tar ratatouille.mp4
+            feedback: L'option ``-d`` permet de voir la différence entre le fichier
+                donné en paramètre et le fichier portant le même nom contenu dans
+                l'archive.
+        -   text: |-
+                .. code:: bash
+
+                    tar --delete -f archive.tar ratatouille.mp4
+            feedback: Bonne réponse. L'option ``--delete``, permet de supprimer un
+                élément de l'archive et l'option ``-f`` permet de préciser le nom
+                de l'archive.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    tar--delete --file archive.tar ratatouille.mp4
+            feedback: L'espace entre ``tar`` et ``--delete`` est important. Si vous
+                ne le préciser par le shell va interpréter la commande ``tar--delete``
+                qui n'existe pas
+        -   text: |-
+                .. code:: bash
+
+                    tar --delete-f archive.tar ratatouille.mp4
+            feedback: L'espace entre ``--delete`` et ``-f`` est primordial. Si vous
+                ne le mettez pas le shell va interpréter l'option ``--delete-f`` qui
+                n'existe pas.
+    q3:
+        type: multiple_choice
+        name: ''
+        header: Vous vous rendez compte que vous avez supprimé ``ratatouille.mp4``
+            par erreur de l'archive ``archive.tar``, quelle commande utiliserez-vous
+            pour le restorer dans ``archive.tar``?
+        multiple: true
+        limit: 0
+        success_message: Félicitation. Vous pouvez aussi consulter la page de manuel
+            pour plus de détails sur la commande ``tar``. Elle est disponible en anglais
+            via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_
+            et en français via `https://man.cx/tar <https://man.cx/tar>`_
+        error_message: Vous pouvez faire mieux en consultant la page de manuel pour
+            plus de détails sur la commande ``tar``. Elle est disponible en anglais
+            via `https://man7.org/linux/man-pages/man1/tar.1.html <https://man7.org/linux/man-pages/man1/tar.1.html>`_
+            et en français via `https://man.cx/tar <https://man.cx/tar>`_
+        choices:
+        -   text: |-
+                .. code:: bash
+
+                    tar -rf archive.tar ratatouille.mp4
+            feedback: Bonne réponse. L'option ``-r`` permet d'ajouter un ou des fichiers
+                à une archive existante.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    tar -uf archive.tar ratatouille.mp4
+            feedback: Bonne réponse. L'option ``-u`` permet d'actualiser la version
+                du fichier dans l'archive si la nouvelle version du fichier est plus
+                récente. Dans notre cas étant donnée que le fichier n'est pas dans
+                l'archive, il sera simplement ajouté.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    tar -xf archive.tar ratatouille.mp4
+            feedback: L'option ``-x`` permet plutôt d'extraire les fichiers de l'archive.
+        -   text: |-
+                .. code:: bash
+
+                    tar -tf archive.tar ratatouille.mp4
+            feedback: L'option ``-t`` permet plutôt de lister le contenu de l'archive.
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

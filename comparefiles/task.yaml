@@ -1,0 +1,42 @@
+accessible: true
+author: ''
+categories: []
+contact_url: ''
+context: |-
+    .. raw:: html
+
+          <script>
+              let index1 = parseInt(input["@random"][0]*100 )%7;
+              let index2 = parseInt(input["@random"][1]*100 )%7;
+              let set1 = ["main.c" , "arthm.java" , "setup.py" , "conf.sh", "data.csv" , "apache.conf", "index.html"]
+              let set2 = ["maiN.c" , "arthM.java" , "seTup.py" , "coNf.sh", "dAta.csv" , "aPache.conf", "inDex.html"]
+              let file1 = set1[index1]
+              let file2 = set2[index2]
+              document.write("In this exercice verify if the content of files: \" student/") ;
+              document.write(file1);
+              document.write(" \" and \"student/");
+              document.write(file2);
+              document.write("\" are the same without open them. If they are not the same redirect the difference to the file \"student/out.put\".")
+          </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '3'
+name: compare files
+network_grading: false
+problems: {}
+regenerate_input_random: 'on'
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

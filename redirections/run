@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ssh_student
+
+nb_redirections=$(cat /task/student/.ssh_logs | grep ">> presences" | wc -l)
+nb_retardataires=$(cat /task/student/.ssh_logs | grep "> retardataires" | wc -l)
+nb_mot_excuse=$(cat /task/student/.ssh_logs | grep "cat mot_excuse | cat mot_excuse | cat mot_excuse | cat mot_excuse | cat mot_excuse" | wc -l)
+
+if [[ $nb_redirections -ne 1 ]]; then
+    feedback-msg -a -m "Vous n'avez pas fait la redirection attendue pour ajouter votre nom !"
+    feedback-result failed
+elif [[ $nb_retardataires -ne 1 ]]; then
+    feedback-msg -a -m "Vous n'avez pas fait la redirection attendue pour créez la liste retardataires !"
+    feedback-result failed
+elif [[ $nb_mot_excuse -ne 1 ]]; then
+    feedback-msg -a -m "Vous n'avez pas fait la redirection attendue pour recopiez le mot d'excuse !"
+    feedback-result failed
+else
+    feedback-msg -m "Bravo ! Vous avez bien compris la commande !"
+    feedback-result success
+fi

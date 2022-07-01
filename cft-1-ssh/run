@@ -1,0 +1,29 @@
+#!/bin/bash
+
+username=$(getinput @username)
+
+ssh_student --setup-script "bash student/scripts/start.sh"
+
+logs=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2)
+
+hash_file=$(cat student/.ressources/script/hash)
+
+finish_file=$(cat student/.ressources/script/finish)
+
+echo "$username"
+
+answer=$(echo "$username" | sha256sum)
+
+echo "$answer"
+
+echo "$hash_file"
+
+echo "$finish_file"
+
+if [[ "$answer" == "$hash_file" && "$finish_file" == "success" ]]; then
+	feedback-result success
+	rst-msgblock --class warning --message "Bravo!! Vous avez fini le CTF. Félicitations!!!"  | feedback-msg -a
+else
+	feedback-result failed
+	rst-msgblock --class warning --message "Vous n'avez pas obtenu le code pour valider le CTF. Revoyez les commandes dans le cours et reprenez!!!"  | feedback-msg -a
+fi

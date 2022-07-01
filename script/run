@@ -1,0 +1,14 @@
+#!/bin/bash
+ssh_student
+
+if [[ -f student/hello.sh ]]; then
+	if [[ "$(student/hello.sh)" == "Hello World!" ]]; then 
+		feedback-result success
+	else
+		feedback-result failed
+    	feedback-msg -m "L'executable ne renvoie pas 'Hello World!'"
+	fi
+else
+	feedback-result failed
+    feedback-msg -m "L'executable 'hello.sh' n'existe pas dans le dossier student/"
+fi

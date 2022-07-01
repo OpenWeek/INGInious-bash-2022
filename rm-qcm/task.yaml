@@ -1,0 +1,122 @@
+accessible: true
+author: Emery Assogba
+categories:
+- qcm
+- simple
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``rm`` permet d'effacer des fichiers ou des répertoires.
+
+    La page du manuel est disponible en anglais via `https://man7.org/linux/man-pages/man1/rm.1.html <https://man7.org/linux/man-pages/man1/rm.1.html>`_ et en français via `https://man.cx/rm(1)/fr <https://man.cx/rm(1)/fr>`_
+
+    Nous allons nous familiariser avec les fonctionnalités de cette commande.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de la commande rm
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: |-
+            Pour trouver de l'aide sur l'utilisation de la commande ``rm``, que puis je faire?
+
+            Choisissez toutes les bonnes réponses.
+        multiple: true
+        limit: 0
+        choices:
+        -   text: |-
+                .. code:: bash
+
+                    man rm
+            feedback: Bonne réponse. Le manuel est la première source d'information
+                pour les commandes Unix/Linux.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    manuel rm
+            feedback: '``manuel`` n''est pas une commande Unix/Linux. Le texte de
+                l''énoncé peut être une bonne piste.'
+        -   text: Visiter la page web `https://man7.org/linux/man-pages/man1/rm.1.html
+                <https://man7.org/linux/man-pages/man1/rm.1.html>`_ et en français
+                via `https://man.cx/rm(1)/fr <https://man.cx/rm(1)/fr>`_
+            feedback: 'Bonne réponse. Le site web `https://man7.org` est une excellente
+                source d''information sur l''utilisation des commandes Unix/Linux
+                dont ``rm`` '
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    rm --help
+            feedback: 'Bonne réponse. La commande ``rm`` et en générale la plupart
+                des commandes Unix/Linux ont une option d''aide ``--help`` ou ``-h``
+                qui permet d''afficher la page d''aide de la commande. '
+            valid: true
+        -   text: Lire la partie portant sur la commande ``rm`` dans le syllabus en
+                ligne `https://sites.uclouvain.be/SyllabusC/notes/Outils/shell.html
+                <https://sites.uclouvain.be/SyllabusC/notes/Outils/shell.html>`_
+            feedback: 'Bonne réponse. Le syllabus en ligne est aussi une source précieuse
+                d''information pour savoir utiliser la plupart des commandes Unix/Linux '
+            valid: true
+    q2:
+        type: multiple_choice
+        name: ''
+        header: Vous désirez supprimer le répertoire ``data`` contenant des données
+            qui ne vous sont plus utiles. Quelles commandes utiliserez vous?
+        limit: 0
+        choices:
+        -   text: |-
+                .. code:: bash
+
+                    rm -r data
+            feedback: Bonne réponse. L'option ``-r`` de la commande ``rm`` permet
+                de supprimer récursivement un répertoire et tout son contenu.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    rm data
+            feedback: 'La commande ``rm`` ne supprime pas un répertoire par défaut.
+                il faut activer une option. Veuillez consulter le manuel d''aide en
+                utilisant l''un des moyens suivants: ``man rm`` ou ``man --help``'
+        -   text: |-
+                .. code::
+
+                    rm -d data
+            feedback: 'La commande ``rm`` avec l''option ``-d`` ne supprime un répertoire
+                que si ce dernier est vide. Veuillez consulter le manuel d''aide en
+                utilisant l''un des moyens suivants: ``man rm`` ou ``man --help``'
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

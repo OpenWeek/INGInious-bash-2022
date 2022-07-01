@@ -1,0 +1,78 @@
+accessible: true
+author: Emery Assogba
+categories:
+- simple
+- interactif
+contact_url: ''
+context: |-
+    .. raw:: html
+
+          <script>
+              let index1 = parseInt(input["@random"][0]*100)%7;
+              let index2 = parseInt(input["@random"][1]*100)%7;
+              let index3 = parseInt(input["@random"][2]*100)%7;
+
+              let softs = ["geo","histoire","anglais", "maths" ,"bio" , "geometrie" , "algebre"]
+              let paterns = ["break","alarm","strcmp", "memcpy" ,"atoi" , "strsignal" , "pipe"]
+              let files = ["resultat.out","reponse.out","resultats.out", "reponses.out" ,"mareponse.out" , "monresultat.out" , "valeur.out"]
+              let soft = softs[index1]
+              let patern = paterns[index2]
+              let file = files[index3]
+              document.write("Vous venez de recevoir une information très importante disséminer dans les fichiers du répertoire \"student/") ;
+              document.write(soft);
+              document.write("\". <br> Pour cela vous devez retrouvez le nombre de fichiers de ce répertoire qui contient la chaine de caractère:  \"");
+              document.write(patern);
+              document.write("\"<br>  Dès que vous avez ce nombre, stocker le en lieu sûr dans le fichier \"student/");
+              document.write(file);
+              document.write("\", cela vous aidera à résoudre votre énigme")
+          </script>
+
+
+
+    Cliquer sur le bouton ``Soumettre`` pour avoir les credentials pour vous connecter en ``ssh`` au serveur. Puis positionnez-vous dans le répertoire ``student`` pour démarrer votre exercice.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '60'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '3'
+name: Utilisation de grep
+network_grading: false
+problems: {}
+regenerate_input_random: 'on'
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

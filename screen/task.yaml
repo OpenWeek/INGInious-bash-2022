@@ -1,0 +1,54 @@
+accessible: true
+author: ''
+categories: []
+contact_url: ''
+context: |-
+    Enoncé
+    ------
+
+    Vous avez trouvé un vieux pc portable dans les placards de votre père et vous vous décidez d'en faire un petit serveur Minecraft pour jouer avec quelques potes. Une fois le serveur lancé vous vous rendez compte que vous n'avez plus accès au terminal mais juste au terminal de Minecraft. Seul moyen de pouvoir lancer des commandes systèmes, arrêter le serveur Minecraft ou se connecter par ssh. Pas très pratique.
+
+    Pour réussir cet exercice, il vous faut :
+
+    * créer une nouvelle instance de terminal
+
+    * lancer le script ``student/loop.sh``
+
+    * quitter l'instance
+
+    * lister les instances de screen
+
+    La commande
+    -----------
+
+    La comande ``screen`` permet de lancer ou rejoindre des sessions différentes de terminal (comme si vous ouvriez plusieurs fenêtres de terminal sur votre interface graphique). Elle est donc très utile quand vous n'avez accès que à un terminal unique d'un serveur sans interface graphique.
+
+    ``screen`` permet de lancer une nouvelle instance de terminal.
+
+    ``ctrl+a+d`` permet de quitter l'instance dans laquelle on se trouve.
+
+    ``screen -list`` permet de lister les instances déjà créée et voir si vous y êtes "Attached" ou "Detached".
+
+    ``screen -r [pid]`` permet de se rattacher à l'instance avec le pid indiqué.
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: La commande screen
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

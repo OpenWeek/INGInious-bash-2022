@@ -1,0 +1,70 @@
+accessible: true
+author: Emery Assogba, Nathan Tihon
+categories:
+- simple
+- interactif
+contact_url: ''
+context: |-
+    .. raw:: html
+
+          <script>
+              let index1 = parseInt(input["@random"][0]*100 )%7;
+              let index2 = parseInt(input["@random"][1]*100 )%4;
+              let files= ["hello.txt" , "Hello.txt" , "hell0.txt" , "HEllo.txt", "hEllo.txt" , "heLlo.txt", "heLLo.txt"]
+              let msgs = ["Bonjour Monsieur" , "Comment allez vous?",  "Je viens vous rendre visite" , "Linux est super"]
+              let file = files[index1]
+              let msg = msgs[index2]
+              document.write("Dans cet exercice il vous faudra ajouter le texte: \"") ;
+              document.write(msg);
+              document.write("\" à la fin du fichier: ");
+              document.write(file);
+          </script>
+
+
+    Connectez vous par ``ssh`` et dirigez vous dans le répertoire ``student`` pour pouvoir résoudre l'exercice.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '2'
+name: Ajout de texte à la fin d'un fichier
+network_grading: false
+problems: {}
+regenerate_input_random: 'on'
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

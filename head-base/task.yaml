@@ -1,0 +1,75 @@
+accessible: true
+author: Emery Assogba
+categories:
+- simple
+- qcm
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``head`` permet d'afficher à l'écran les pemières parties d'un fichier. Vous avez le fichier ``secret.txt`` dans le répertoire ``student``, ce fichier est assez volumineux. Si vous devez l'ouvrir dans votre terminal, cela prendrait du temps et risquerait de faire crasher votre session.
+
+
+    La page du manuel est disponible en anglais via `https://man7.org/linux/man-pages/man1/head.1.html <https://man7.org/linux/man-pages/man1/head.1.html>`_ et en français via `https://man.cx/head <https://man.cx/head>`_
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: La commande head
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: Quelle commande pouvez-vous utiliser   pour juste afficher à l'écran
+            les 20 premières lignes de ce fichier?
+        limit: 0
+        choices:
+        -   text: |-
+                .. code-block:: console
+
+                    head -n 20 student/secret.txt
+            feedback: 'Bonne réponse, l''option ``-n`` de la commande ``head`` permet
+                de spécifier le nombre de lignes à afficher.  '
+            valid: true
+        -   text: |-
+                .. code-block:: console
+
+                    head -c 20 student/secret.txt
+            feedback: 'L''option ``-c`` permet plutôt d''afficher les ``n`` premiers
+                octets. '
+        -   text: |-
+                .. code-block:: console
+
+                    head student/secret.txt
+            feedback: Sans option la commande ``head`` permet d'afficher les 10 premières
+                lignes
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

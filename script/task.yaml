@@ -1,0 +1,36 @@
+accessible: true
+author: Séverin Robert
+categories: []
+contact_url: ''
+context: |-
+    Votre but est de créer un executable bash qui affiche "Hello World!" sur la sortie standard.
+
+    Créez un fichier du nom ``hello.sh`` dans le dossier ``student/`` et ouvrez le avec vim grâce à la commande ```vi``.
+
+    Un fichier exécutable commence toujours par ``#!`` et le chemin vers l'exécuteur (ici /bin/bash). Cette ligne permet au système de savoir avec quel exécuteur exécuter l'exécutable.
+
+    Une fois le fichier rédigé, sauvegardez-le. Pour lancer un exécutable il suffit de faire ``./hello.sh``, si vous le faites, vous remarquerez que vous n'avez pas les permissions. En effet, par soucis de sécurité, les fichiers créés ne peuvent pas être exécutés et il faut donc changer leurs permissions et ajouter le droit d'exécuter le fichier.
+
+    Cherchez dans le man de la commande ``chmod`` soit dans le terminal, soit ici https://www.man7.org/linux/man-pages/man1/chmod.1.html . Pour comprendre comment fonctionne les permissions voici un lien https://linuxize.com/post/understanding-linux-file-permissions/
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Création d'un executable
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

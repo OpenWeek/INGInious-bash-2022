@@ -1,0 +1,103 @@
+accessible: true
+author: Olivier Bonaventure, Emery Assogba
+categories: []
+contact_url: ''
+context: |-
+    Objectifs
+    ---------
+
+    Dans cet exercice vous allez découvrir le monde merveilleux de la ligne de commande en capturant un flag.
+    Pour cela, vous allez vous connecter par ssh au serveur de ``inginious.org`` pour avoir accès à un ``terminal``.
+
+    Pour commencer, vous allez apprendre à utiliser ``cd(1posix)``, ``ls(1)`` et ``cat(1)``.
+
+    ``cd(1posix)`` est utilisé pour changer le répertoire courant. (Vous pouvez obtenir le répertoire courant avec ``pwd(1)``.)
+    Exemples :
+
+    .. code-block:: bash
+
+        cd chemin  # : change le répertoire courant par celui de “chemin”.
+        cd         # : change le répertoire courant par le répertoire de login de l’utilisateur courant.
+        cd ..      # : remonte dans le répertoire prédécesseur dans l’arborescence des fichiers.
+
+    ``ls(1)`` liste le contenu du répertoire.
+    Exemples :
+
+    .. code-block:: bash
+
+        ls         # : affiche la liste du contenu du répertoire courant.
+        ls chemin  # : affiche la liste du contenu du répertoire indiqué dans "chemin".
+
+    ``cat(1)`` concatène les fichiers et les affiches sur le sortie standard.
+    Exemples :
+
+    .. code-block:: bash
+
+        cat ficher #: affiche le contenur du fichier "fichier".
+
+    Instructions
+    ------------
+
+    Le CTF va vous conduire à travers un ensemble d'instructions qui vous conduira progregissement à capturer le ``flag`` que vous allez copier dans un fichier dans le répertoire ``student`` que vous nommerez par votre ``username``
+
+    Par exemple si le ``flag`` généré est ``abcd122225566778889eeeee5455 -`` et votre nom d'utlisateur inginious est ``tintin`` vous pouvez le copier dans le fichier en utilisant la commande suivante:
+
+    .. code-block:: console
+
+        echo "abcd122225566778889eeeee5455 -" > /task/student/tintin
+
+    Pour la permière étape de cet exercice, vous devez lire le fichier dans le répertoire ``student/ctf/folder1``. Pour cela, cliquez sur le bouton ``soumettre`` pour avoir les crédentials d'accès au serveur et ouvrez un terminal pour vous connecter. Dès que vous êtes connecté au serveur écrivez:
+    (# le croisillon indique un commentaire)
+
+    .. code-block:: bash
+
+        cd student/ctf/folder1 # va dans le répertoire folder1
+        ls         # liste les fichiers dans folder1, il n'y en a qu'un, affichez son contenu à l'écran
+        cat nom    # l'instruction suivante s'affichera
+
+    Cliquez sur Soumettre pour avoir les credentials d'accès au serveur pour découvrir le potentiel de la ligne de commande. Vous aurez la suite des instructions au fur et à mesure.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Capture the flag 2
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

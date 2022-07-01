@@ -1,0 +1,75 @@
+accessible: true
+author: Nathan Tihon
+categories:
+- interactif
+- advanced
+contact_url: ''
+context: |-
+    Dans cet exercice, vous allez apprendre à combiner plusieurs commandes de manière efficace.
+
+    Avant de faire cet exercice, nous vous conseillons fortement de faire `celui-ci <https://inginious.org/course/cli-linux/curl-base>`_, qui est une version plus courte et plus simple. Il vous permettra de vous familiariser aves les commandes ``curl`` et ``unzip``, que vous devrez utiliser. (Voyez le comme une introduction)
+
+    Vous avez de nouveau une folle envie d'acheter du Bitcoin mais vous souhaitez tout de même analyser quelques données au préalable. Pour cela il vous faudra télécharger les données du Bitcoin durant la 2ième moitié de 2020 (de juillet à décembre). Vous pouvez de nouveau télécharger les fichiers à cette url : `https://data.binance.vision/data/spot/monthly/klines/BTCEUR/1h/BTCEUR-1h-2020-XX.zip`, dans laquelle il faut remplacer le ``XX`` par les mois voulus. (*Tips* : aller regarder dans les `pages de manuel de curl <https://man7.org/linux/man-pages/man1/curl.1.html>`_ comment télécharger plusieurs fichiers en une seule commande).
+
+    Il vous faudra ensuite "décompresser" les fichiers pour disposer des fichiers ``.csv`` que vous pourrez traiter. Ceci est aussi faisable en une seule commande. Attention, ne supprimez aucun fichier !
+
+    Lorsque vous diposerez des fichiers ``.csv``, les informations que contiennent les colonnes sont celles-ci : ``Temps initial(unix), Prix initial, Prix le plus élevé, Prix le plus bas, Prix final, Volume (BTC), Temps final(unix), Volume (EUR), Nombre de Trade,...``. Vous pouvez ignorer les colonnes suivantes.
+
+    Une fois tout cela accompli, nous vous demandons de remplir un fichier ``answer.txt`` contenant les informations suivantes (la manière dont vous introduisez les réponses dans le fichier n'a pas d'importance tant qu'elles sont toutes présentes dans le même fichier) :
+
+    #. Prix le plus bas sur les 6 mois.
+    #. Date du prix le plus bas sur les 6 mois.
+    #. Prix le plus haut sur les 6 mois.
+    #. Volume le plus haut sur les 6 mois.
+
+    N'introduisez pas d'informations superflues dans le fichier ``answer.txt``, sinon cela sera plus dur à analyser !
+
+    Vous possédez un serveur privé virtuel (VPS) et avez envie de savoir si vous pouvez l'utiliser pour cette tâche, connectez-vous par ``ssh`` à votre serveur, allez dans le répertoire ``student`` et menez à bien cet exercice.
+
+    .. Note::
+
+        Cet exercice est un peu plus compliqué que les autres et nécéssite de mettre en pratique de nombreuses commandes vues jusqu'à présent, n'hésitez pas à consulter les pages de manuel de ces dernières, vous aurez même peut-être besoin de faire d'autres recherches plus approfondies !
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: default
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: '300'
+        memory: '100'
+    network_grading: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Combinaison de commandes
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

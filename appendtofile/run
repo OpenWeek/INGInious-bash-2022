@@ -1,0 +1,36 @@
+#!/bin/bash
+
+random_input=$(getinput @random)
+set -- $random_input
+# Get the random value and convert it to index in files data set
+rand1=`echo "$1" | grep -Eo '[+-]?[0-9]+([.][0-9]+)?'`
+rand2=`echo "$2" | grep -Eo '[+-]?[0-9]+([.][0-9]+)?'`
+index1=`echo "print(int(($rand1*100) % 7))" | python3`
+index2=`echo "print(int(($rand2*100) % 4))" | python3`
+#index1=$(bc <<< "scale=0; (($rand1)*100)%7" | awk '{printf("%d\n",$1)}' )
+#index2=$(bc <<< "scale=0; (($rand2)*100)%4" | awk '{printf("%d\n",$1)}' )
+files=("hello.txt" "Hello.txt" "hell0.txt" "HEllo.txt" "hEllo.txt" "heLlo.txt" "heLLo.txt")
+msgs=("Bonjour Monsieur" "Comment allez vous?" "Je viens vous rendre visite" "Linux est super")
+file=${files[$index1]}
+msg=${msgs[$index2]}
+
+ssh_student --setup-script "python3 student/start.py /task/student/$file"
+
+nlines=$(cat /task/student/"$file" | wc -l )
+
+# Checks if the student append (>>) or writes (>)
+if [ $nlines -eq  1 ];then 
+	feedback-result failed
+    feedback-msg -m "Vous devez ajouter le texte à la fin du fichier et non écraser son contenu. Pensez aux symboles de redirection de la sortie standard"
+    exit
+fi
+
+# get the last line of file
+lastline=$(tail -n 1 /task/student/"$file")
+if [ "$msg" = "$lastline" ]; then
+	feedback-result success
+    feedback-msg  -m "Félicitation!! Vous avez réussi. Vous avez une bonne maîtrise des redirections"
+else
+	feedback-result failed
+    feedback-msg  -m "Vous devez ajouter le texte à la fin du fichier. Pensez aux symboles de redirection de la sortie standard"
+fi 

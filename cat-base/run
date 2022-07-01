@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ssh_student --setup-script "bash student/start.sh"
+
+
+
+nb_cat_file1=$(cat /task/student/.ssh_logs | grep "cat fichier1.txt" | wc -l)
+nb_cat_secret_file=$(history | grep "cat secret.txt" | wc -l)"
+nb_cat_hidden_file=$(history | grep "cat .mot_de_passe.txt" | wc -l)
+
+
+if [[ $nb_cat_file1 < 1 && $nb_cat_hidden_file < 1 && $nb_cat_secret_file < 1 ]]; then
+    feedback-msg -m "Vous n'avez pas afficher le contenu de tout les fichiers !"
+    feedback-result failed
+else
+    feedback-msg -m "Bravo ! Vous avez bien compris la commande !"
+    feedback-result success
+fi

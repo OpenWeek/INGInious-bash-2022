@@ -1,0 +1,36 @@
+#!/bin/bash
+ssh_student --setup-script "python3 student/scripts/start.py"
+
+solution=$(find student -iregex ".*/*[.]bak" )
+commands=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2  )
+nbfiles_bak=$(ls -l student/*.bak | wc -l)
+nbfiles_python=$(ls -l student/*.py | wc -l)
+nbfiles_text=$(ls -l student/*.txt | wc -l)
+nb_rm=$(grep -o "rm " /task/student/.ssh_logs | wc -l )
+
+if [[ $nbfiles_python -ne 10 ]]; then
+	rst-msgblock --class info --message "Vous avez supprimé certains fichiers python accidentellement. Le nombre de fichiers python est 10 mais suite à vos manipulations il y a $nbfiles_python fichiers python"  | feedback-msg -a
+fi
+
+if [[ $nbfiles_text -ne 10 ]]; then
+	rst-msgblock --class info --message "Vous avez supprimé certains fichiers texte accidentellement. Le nombre de fichiers texte est 10, mais suite à vos manipulations il y a $nbfiles_text fichiers texte"  | feedback-msg -a
+fi
+
+
+if [[ $nbfiles_bak -ne 10 && $nbfiles_bak -ne 0 ]]; then
+	rst-msgblock --class info --message "Vous n'avez pas supprimé tous les fichiers .bak. Il reste encore $nbfiles_bak fichiers backup"  | feedback-msg -a
+fi
+
+if [[ $nb_rm -ne 1 ]];then
+	rst-msgblock --class info --message "Vous avez utilisé plusieurs fois la commande ``rm``. En lisant la partie sur les expressions régulières du syllabus vous saurez comment réduire le nombre d'utilisation de la commande ``rm`` " | feedback-msg -a
+fi
+
+if [[ $nbfiles_bak -eq 0 && $nbfiles_text -eq 10  && $nbfiles_python -eq 10  && $nb_rm -eq 1 ]]; then
+	rst-msgblock --class info --message " Bravo vous avez supprimé tous les fichiers backup. Vous avez respecté les consignes. Vous pouvez passer à l'exercice suivant." | feedback-msg -a
+	feedback-result success
+else
+	rst-msgblock --class info --message  "Vous n'avez pas pu supprimé les fichiers backup. Vous pouvez consulter le manuel via ``https://man7.org/linux/man-pages/man1/rm.1.html <https://man7.org/linux/man-pages/man1/rm.1.html>_`` et en français via ``https://man.cx/rm(1)/fr <https://man.cx/rm(1)/fr>_`` et suivez les consignes ci-dessus. " | feedback-msg  -a
+	rst-msgblock --class info --message "Vous avez utilisé les commandes suivantes: $commands. Elles n'ont pas été utiles pour supprimer tous les fichiers backup." | feedback-msg -a
+	feedback-result failed
+	exit
+fi

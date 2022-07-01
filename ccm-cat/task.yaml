@@ -1,0 +1,116 @@
+accessible: true
+author: Olivier Bonaventure
+categories:
+- qcm
+contact_url: ''
+context: |-
+    Si le fichier ``fichier.txt`` contient le poème de Paul, Verlaine quelle est la commande qu'il faut exécuter pour obtenir ceci sur le terminal ?
+
+    .. code:: console
+
+         1    Les sanglots longs
+         2    Des violons
+         3    De l’automne
+         4    Blessent mon coeur
+         5    D’une langueur
+         6    Monotone.
+         7
+         8    Tout suffocant
+         9    Et blême, quand
+        10    Sonne l’heure,
+        11    Je me souviens
+        12    Des jours anciens
+        13    Et je pleure;
+        14
+        15    Et je m’en vais
+        16    Au vent mauvais
+        17    Qui m’emporte
+        18    Deçà, delà,
+        19    Pareil à la
+        20    Feuille morte.
+
+    N'oubliez pas que les man-pages sont une source d'informations très utiles ! La man page de ``cat`` peut être retrouvée `ici <https://man7.org/linux/man-pages/man1/cat.1.html>`_
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de cat
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: Commande cat à utiliser
+        header: ''
+        limit: 3
+        success_message: Félicitations
+        error_message: Relisez le message d'aide affiché par ``cat --help`` ou la
+            page de manuel de ``cat``
+        choices:
+        -   text: cat -n fichier.txt
+            valid: true
+        -   text: cat fichier
+            feedback: Cette commande affichera le contenu de ``fichier.txt`` mais
+                sans numéroter les lignes.
+        -   text: cat-n fichier.txt
+            feedback: Notez qu'il n'y a pas d'espace entre ``cat`` et ``-n``. Cela
+                signifie que vous essayez d'exécuter la commande ``cat-n`` qui n'existe
+                pas.
+        -   text: cat --number fichier.txt
+            valid: true
+        -   text: cat -E fichier.txt
+            feedback: |-
+                Cette commande affiche
+
+                .. code:: console
+
+                   Les sanglots longs$
+                    Des violons$
+                    De l’automne$
+                    Blessent mon coeur$
+                    D’une langueur$
+                    Monotone.$
+                    $
+                    Tout suffocant$
+                    Et blême, quand$
+                    Sonne l’heure,$
+                    Je me souviens$
+                    Des jours anciens$
+                    Et je pleure;$
+                    $
+                    Et je m’en vais$
+                    Au vent mauvais$
+                    Qui m’emporte$
+                    Deçà, delà,$
+                    Pareil à la$
+                    Feuille morte.$
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

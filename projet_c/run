@@ -1,0 +1,31 @@
+#!/bin/bash
+
+ssh_student --setup-script "bash student/scripts/start.sh"
+
+
+cd /task/student/c_project
+
+make_tests_exists=$(make tests | grep "asserts     10     10     10      0")
+
+grade=0
+
+if [[ ! -f calc ]]; then
+	feedback-msg -a -e -m "Le fichier calc n'a pas été créé ! Est-ce que vous avez appelé make ?\n"
+	feedback-result failed
+else
+	grade=$(($grade+10))
+fi
+
+if [[ -z $make_tests_exists ]]; then
+	feedback-msg  -a -e -m "La cible tests du Makefile n'est pas valide ! Est-ce que vous exécutez le test ? \n"
+	feedback-result failed
+else
+	grade=$(($grade+90))
+fi
+
+if [[ $grade -eq 100 ]]; then
+	feedback-msg -a -m "Vous avez réussi !"
+    feedback-result success
+fi
+
+feedback-grade $grade

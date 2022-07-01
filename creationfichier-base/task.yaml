@@ -1,0 +1,127 @@
+accessible: false
+author: Emery Assogba
+categories:
+- qcm
+contact_url: ''
+context: |-
+    La commande ``touch`` permet de modifier la date d'accès et la date de modification d'un fichier. Au besoin le fichier est créé s'il n'existe pas.
+
+    Tapez ``man touch`` pour accéder à la page de manuel de cette commande. Elle est aussi disponible en anglais via `https://man7.org/linux/man-pages/man1/head.1.html <https://man7.org/linux/man-pages/man1/head.1.html>`_
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de touch
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: |-
+            La date de l'ordinateur a été mal réglée et la date de modification du fichier ``secret.keys`` a été malheureusement modifiée et ne correspond à aucune date correcte.
+
+            Parmi les propositions suivantes choisissez celle qui permet de restorer la date de modification du fichier ``secret.keys``.
+        multiple: true
+        limit: 0
+        success_message: Félicitation vous avez touvé la bonne réponse. Veuillez consulter
+            le manuel `https://man.cx/touch <https://man.cx/touch>`_ en français et
+            `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_
+            en anglais pour plus d'informations sur la commande ``touch``
+        error_message: Veuillez consulter le manuel `https://man.cx/touch <https://man.cx/touch>`_
+            en français et `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_
+            en anglais pour plus d'informations sur la commande ``touch``
+        choices:
+        -   text: touch -m secrets.keys
+            feedback: Avec l'option -m ``touch`` permet de modifier  la date de modification
+                d'un fichier.
+            valid: true
+        -   text: touch secrets.keys
+            feedback: 'Sans option la commande ``touch``  la date de modification
+                d''un fichier.  '
+            valid: true
+        -   text: touch -r oldfile.txt secrets.keys
+            feedback: Avec l'option ``-r`` la commande ``touch`` utilise la date de
+                modification du fichier ``oldfile.txt`` comme date de référence pour
+                adapter la date de modification de ``secrets.keys``. Nous ne sommes
+                pas sûrs que la date de modification de ``oldfile.txt`` corresponde
+                à la date courante.
+        -   text: touch-m secrets.keys
+            feedback: 'Il n''ya pas d''espace entre ``touch`` et ``-m``. Le shell
+                l''interprète comme la commande ``touch-m`` qui n''existe pas.  '
+    q2:
+        type: multiple_choice
+        name: ''
+        header: |-
+            Supposons que les fichiers ``run.py`` et ``setup.py`` existent déjà dans le répertoire courant.
+
+            Quel sera le résultat de la commande suivante:
+
+            .. code:: bash
+
+                touch run.py setup.py
+        limit: 0
+        success_message: Félicitation vous avez touvé la bonne réponse. Veuillez consulter
+            le manuel `https://man.cx/touch <https://man.cx/touch>`_ en français et
+            `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_
+            en anglais pour plus d'informations sur la commande ``touch``
+        error_message: Veuillez consulter le manuel `https://man.cx/touch <https://man.cx/touch>`_
+            en français et `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_
+            en anglais pour plus d'informations sur la commande ``touch``
+        choices:
+        -   text: Un message d'erreur, car la commande ``touch`` ne s'applique qu'à
+                un seul fichier à la fois.
+            feedback: 'La commande ``touch`` peut s''appliquer à plusieurs fichiers
+                à la fois. '
+        -   text: 'Le contenu des fichiers ``run.py`` et ``setup.py`` sera écrasé.  '
+            feedback: 'Si les fichiers existent déjà la commande ``touch`` ne les
+                crée plus. '
+        -   text: La date d'accès des fichiers ``run.py`` et ``setup.py`` sera modifiée
+                à la date courante.
+            feedback: 'La réponse est partiellement vrai. Mais ce n''est pas uniquement
+                la date d''accès qui sera modifiée. '
+        -   text: La date de modification des fichiers ``run.py`` et ``setup.py``
+                sera modifiée à la date courante.
+            feedback: 'La réponse est partiellement vrai. Mais ce n''est pas uniquement
+                la date de modification qui sera modifiée. '
+        -   text: La date de modification et la date d'accès des fichiers ``run.py``
+                et ``setup.py`` seront modifiées à la date courante.
+            feedback: Exécuter sans arguments, la commande ``touch`` modifie la date
+                de modification des fichiers passés en argument. Par défaut la nouvelle
+                date est la date courante.
+            valid: true
+    q3:
+        type: multiple_choice
+        name: ''
+        header: |-
+            Quel sera le résultat de la commande suivante si les fichier ``run.py`` et ``setup.py`` n'existe pas encore dans le répertoire courant:
+
+            .. code:: bash
+
+                touch run.py setup.py
+        limit: 0
+        success_message: Félicitation vous avez touvé la bonne réponse. Veuillez consulter
+            le manuel `https://man.cx/touch <https://man.cx/touch>`_ en français et
+            `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_
+            en anglais pour plus d'informations sur la commande ``touch``
+        error_message: |-
+            Veuillez consulter le manuel `https://man.cx/touch <https://man.cx/touch>`_ en français et `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_ en anglais pour plus d'informations sur la commande ``touch``.
+
+            Consulter en particulier la section ``DESCRIPTION`` pour plus de détails.
+        choices:
+        -   text: Un message d'erreur, car la commande ``touch`` modifie la date de
+                modification, uniquement que pour les fichiers déjà existant.
+            feedback: '``touch`` fait un peu plus que modifier la date de modification
+                du fichier. Nous vous conseillons de visiter les liens ci-dessus.'
+        -   text: Les fichiers ``run.py`` et ``setup.py`` seront créés avec un contenu
+                vide.
+            feedback: Lorsque les fichiers n'existent pas la commande ``touch`` les
+                crée avec un contenu vide.
+            valid: true
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

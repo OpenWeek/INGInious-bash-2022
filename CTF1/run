@@ -1,0 +1,31 @@
+#!/bin/bash
+
+username=$(getinput @username)
+
+ssh_student --setup-script "bash student/scripts/start.sh $username"  --teardown-script "bash student/scripts/epilogue.sh $username"
+
+logs=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2)
+
+hash_file=$(cat student/hash)
+
+student=$(cat student/"$username")
+
+if [[ ! -f student/"$username" ]]; then
+	rst-msgblock --class warning --message "Vous n'avez pas créé le fichier"  | feedback-msg -a
+	feedback-result failed
+	exit
+fi
+
+if [[ ! -f student/hash ]]; then
+	rst-msgblock --class warning --message "le fichier hash n'existe pas"  | feedback-msg -a
+	feedback-result failed
+	exit
+fi
+
+if [[ "$student" == "$hash_file" ]]; then
+	feedback-result success
+	rst-msgblock --class warning --message "Bravo!! Vous avez fini le CTF. Félicitations!!!"  | feedback-msg -a
+else
+	feedback-result faile
+	rst-msgblock --class warning --message "Vous n'avez pas obtenu le code pour valider le CTF. Revoyez les commandes dans le cours et reprenez!!!"  | feedback-msg -a
+fi

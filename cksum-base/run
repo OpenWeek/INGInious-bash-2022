@@ -1,0 +1,20 @@
+#!/bin/bash
+ssh_student
+
+nb_lines=$(cat /task/student/answer.txt  | wc -l)
+
+if [[ $nb_lines -ne 2 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas le bon nombre de fichier." | feedback-msg -ae
+    exit
+fi
+
+contains_musique=$(cat /task/student/answer.txt | grep "musique" | wc -l)
+contains_film_legal=$(cat /task/student/answer.txt | grep "film_legal" | wc -l)
+
+if [[ $contains_musique -eq 1 && $contains_film_legal -eq 1 ]]; then 
+	rst-msgblock -c info -m "Bravo vous avez trouvé les fichiers corrompu !" | feedback-msg -ae
+	feedback-result success
+else
+	rst-msgblock -c info -m "Mauvaise liste de fichier corrompu." | feedback-msg -ae
+	feedback-result failed
+fi

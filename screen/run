@@ -1,0 +1,47 @@
+#!/bin/bash
+
+ssh_student
+
+detached="$(screen -list | grep Detached)"
+
+loop=$(cat /task/student/.ssh_logs | grep "loop.sh")
+
+screenlist=$(cat /task/student/.ssh_logs | grep "-list")
+
+echo "$detached"
+
+echo "$loop"
+
+echo "$screenlist"
+
+grade=0
+
+if [[ -z "$detached" ]]; then
+	feedback-msg -a -m "Aucune instance n'a été créée !"
+    feedback-result failed
+else
+	grade=$(($grade + 33))
+fi
+
+if [[ -z "$loop" ]]; then
+	feedback-msg -a -m "Vous n'avez pas lancer le script loop.sh !"
+    feedback-result failed
+else
+	grade=$(($grade + 33))
+fi
+
+if [[ -z "$screenlist" ]]; then
+	feedback-msg -a -m "Vous n'avez pas listé les instances !"
+    feedback-result failed
+else
+	grade=$(($grade + 34))
+fi
+
+echo $grade
+
+if [[ $grade -eq 100 ]]; then
+	feedback-msg -a -m "Vous avez réussi !"
+    feedback-result success
+fi
+    
+feedback-grade $grade

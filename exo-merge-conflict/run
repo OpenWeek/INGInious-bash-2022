@@ -1,0 +1,19 @@
+#!/bin/bash
+
+ssh_student --setup-script "bash student/scripts/start.sh"
+
+cd /task/student/projet_git
+
+nb_commits=$(git log | grep "commit " | wc -l)
+nb_git_merge=$(git log | grep "Merge: " | wc -l)
+
+if [[ $nb_git_merge -lt 1 ]]; then
+    feedback-msg -a -m "Vous n'avez pas fait de merge !"
+    feedback-result failed
+elif [[ $nb_commits -lt 2 ]]; then
+    feedback-msg -a -m "Vous n'avez pas fait assez de commits !"
+    feedback-result failed
+else
+    feedback-msg -m "Bravo ! Vous avez bien compris les commandes git et comment gérer un conflit !"
+    feedback-result success
+fi

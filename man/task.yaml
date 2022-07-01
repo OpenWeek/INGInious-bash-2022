@@ -1,0 +1,91 @@
+accessible: true
+author: Walter Merlini, Séverin Robert
+categories: []
+contact_url: ''
+context: |-
+    *English version below*
+
+    Vous manquez de place sur votre ordinateur et vous décidez donc à l'aide de commandes unix de vérifier les fichiers volumineux.
+
+    Lancez une connexion ``ssh`` et trouvez les paramètres à mettre à la commande ``ls`` afin de :
+
+    1. voir les fichiers cachés.
+
+    2. avec les informations en colonne
+
+    3. trié par taille
+
+    4. avec des unités de mesures
+
+    Pour démarrer une connexion ``ssh`` vous devez cliquer sur le bouton ``soumettre`` et inginious vous donnera une commande ainsi qu'un mot de passe unique que vous devrez entrer dans votre terminal pour faire l'exercice.
+
+    Une fois que vous avez cliquer sur le bouton ``soumettre``, vous avez 15 minutes pour faire l'exercice.
+
+    Pour résoudre cet exercice, vous devez utiliser la commande ``man ls`` qui indiquera comment utiliser cette commande et les paramètres qu'il est posible de donner !
+
+    ---
+
+    You are running out of space on your computer, so you decide to use unix commands to check for large files.
+
+    Start an ``ssh`` connection and try to find out the parameters you should give to the ``ls`` command in order to :
+
+    1. see the hidden files.
+
+    2. with information in columns
+
+    3. sorted by size
+
+    4. with units of measure
+
+
+    To start a ``ssh`` connection you need to click on the ``submit`` button and inginious will give you a command and a unique password that you will need to enter in your terminal to complete the exercise.
+
+    Once you have clicked on the ``submit`` button you have 15 minutes to complete the exercise.
+
+    To solve this exercise, you must use the ``man ls`` command which will indicates how to use this command and the different parameters you can give to it !
+
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: default
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation du manuel Unix
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

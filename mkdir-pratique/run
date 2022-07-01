@@ -1,0 +1,120 @@
+#!/bin/bash
+ssh_student
+
+#define feedback message
+failed_msg="Vous n'avez malheureusement pas répondu à la question. Veuillez consulter les messages ci-dessus pour trouver des pistes de solution. Et Veuillez consulter le manuel ``https://man.cx/mkdir <https://man.cx/mkdir>``_ en français et ``https://man7.org/linux/man-pages/man1/mkdir.1.html <https://man7.org/linux/man-pages/man1/mkdir.1.html>``_ en anglais pour plus d'informations sur la commande **mkdir**"
+
+success_msg="Félicitations!! vous avez réussi à aider votre frère, vous pouvez passer à la question suivante"
+
+less_mkdir_msg="Vous pouvez utiliser **moins de commandes mkdir** pour résoudre le problème. Relisez le manuel, une option peut vous aider à réduire le nombre de commandes."
+
+no_mkdir_msg="Pour créer un répertoire vous devez utiliser la commande **mkdir** comme expliqué dans le cours."
+
+
+too_cd_msg="Pour bien résoudre le problème, vous devez utiliser ** au plus une fois la commande cd.**"
+
+no_2021_dir_msg="Vous n'avez pas pu créer le répertoire **2021**. N'oubliez pas que ce répertoire doit être **un sous-répertoire du répertoire student/**."
+
+no_info_dir_msg="Vous n'avez pas pu créer le répertoire **informatique**. N'oubliez pas que ce répertoire doit être un ** sous répertoire du répertoire student/2021**."
+
+no_info_examen_dir_msg="Vous n'avez pas pu créer le répertoire examen. N'oubliez pas que l'un des répertoires **examen** doit être **un sous-répertoire du répertoire student/2021/informatique**"
+
+no_philo_dir_msg="Vous n'avez pas pu créer le répertoire **philo**. N'oubliez pas que ce répertoire doit être **un sous-répertoire du répertoire student/2021**"
+
+no_philo_examen_dir_msg="Vous n'avez pas pu créer le sous-répertoire **examen** dans le répertoire philo. N'oubliez pas que l'un des répertoires **examen** doit être un sous-répertoire du **répertoire student/2021/philo**."
+
+# get ssh_log
+
+if [[ -f /task/student/.ssh_logs ]]; then
+	nb_mkdir_cmd=$(grep -o "mkdir" /task/student/.ssh_logs | wc -l )
+	nb_cd_cmd=$(grep -o "cd " /task/student/.ssh_logs | wc -l )
+fi
+
+if [[ $nb_mkdir_cmd -gt 2 ]]; then
+	rst-msgblock -c info -m  "$less_mkdir_msg" | feedback-msg -ae 
+fi
+
+if [[ $nb_mkdir_cmd -eq 0 ]]; then
+	rst-msgblock -c info -m  "$no_mkdir_msg" | feedback-msg -ae 
+	feedback-grade 0
+fi
+
+if [[ $nb_cd_cmd -gt 1 ]]; then
+	rst-msgblock -c info -m "$too_cd_msg" | feedback-msg -ae
+fi
+
+if ! [[ -d /task/student/2021 ]]; then
+	rst-msgblock -c info -m "$no_2021_dir_msg" | feedback-msg -ae
+fi
+
+if ! [[ -d /task/student/2021/informatique ]]; then
+	rst-msgblock -c info -m  "$no_info_dir_msg" | feedback-msg -ae
+fi
+
+if ! [[ -d /task/student/2021/informatique/examen ]]; then
+	rst-msgblock -c info -m  "$no_info_examen_dir_msg" | feedback-msg -ae
+fi
+
+if ! [[ -d /task/student/2021/philo ]]; then
+	rst-msgblock -c info -m "$no_philo_dir_msg" | feedback-msg -ae
+fi
+
+if ! [[ -d /task/student/2021/philo/examen ]]; then
+	rst-msgblock -c info -m "$no_philo_examen_dir_msg"  feedback-msg -ae
+fi
+
+# check if the directories are really created
+if [[ -d /task/student/2021/philo/examen ]] &&  [[ -d /task/student/2021/informatique/examen ]] && [[ $nb_mkdir_cmd -eq 2 ]] && [[ $nb_cd_cmd -le 1 ]]; then
+	feedback-result success
+	feedback-msg  -a -m "$success_msg"
+	feedback-grade 100
+    exit
+fi
+
+if [[ -d /task/student/2021/philo/examen ]] &&  [[ -d /task/student/2021/informatique/examen ]] && [[ $nb_mkdir_cmd -gt 2 ]] && [[ $nb_cd_cmd -gt 1 ]]; then
+	feedback-result failed
+    feedback-grade 90
+    feedback-msg  -a -m "$failed_msg"
+    exit
+fi
+
+
+if [[ -d /task/student/2021/philo/examen ]] &&  ! [[ -d /task/student/2021/informatique/examen ]] && [[ $nb_mkdir_cmd -le 1 ]] && [[ $nb_cd_cmd -le 1 ]]; then
+	feedback-result success
+	feedback-msg  -a -m "$failed_msg"
+	feedback-grade 50 
+    feedback-result failed
+    exit
+fi
+
+if ! [[ -d /task/student/2021/philo/examen ]] &&   [[ -d /task/student/2021/informatique/examen ]] && [[ $nb_mkdir_cmd -le 1 ]] && [[ $nb_cd_cmd -le 1 ]]; then
+	feedback-result success
+	feedback-msg  -a -m "$failed_msg"
+	feedback-grade 50 
+    feedback-result failed
+    exit
+fi
+
+
+if [[ -d /task/student/2021/philo/examen ]] &&  ! [[ -d /task/student/2021/informatique/examen ]] && [[ $nb_mkdir_cmd -gt 1 ]] && [[ $nb_cd_cmd -gt 1 ]]; then
+	feedback-result success
+	feedback-msg  -a -m "$failed_msg"
+	feedback-grade 45 
+    feedback-result failed
+    exit
+fi
+
+if ! [[ -d /task/student/2021/philo/examen ]] &&   [[ -d /task/student/2021/informatique/examen ]] && [[ $nb_mkdir_cmd -gt 1 ]] && [[ $nb_cd_cmd -gt 1 ]]; then
+	feedback-result success
+	feedback-msg  -a -m "$failed_msg"
+	feedback-grade 45 
+    feedback-result failed
+    exit
+fi
+
+if ! [[ -d /task/student/2021/philo/examen ]] && ! [[ -d /task/student/2021/informatique/examen ]]; then
+	feedback-result failed
+    feedback-grade 0
+    feedback-msg  -a -m "$failed_msg"
+    exit
+fi

@@ -1,0 +1,50 @@
+accessible: true
+author: Emery Assogba
+categories:
+- simple
+contact_url: ''
+context: |-
+    Si vous avez déjà fait l'exercice sur l'utilisation de ``touch`` nous vous en félicitons. Si ce n'est pas le cas nous vous encourageons vivement à aller le `faire <https://inginious.org/course/cli-linux/creationfichier-base>`_, cela vous aidera à reussir cet exercice.
+
+    Dans cet exercice nous allons apprendre à utiliser la commande ``touch`` de façon pratique. C'est un exercice interactif. Il vous faudra pour cela cliquer sur soumettre pour avoir les crédentials pour vous connecter par ssh au serveur inginious pour avoir un terminal.
+
+    En vous connectant vous trouverez dans le dossier student deux fichiers: ``run.py`` et ``setup.py``.
+
+    1. La commande ``stat`` permet d'avoir des informations sur un fichier, dont la date de modifcation et la date d'accès. Utiliser les commandes suivantes pour vérifier les dates d'accès et de modification des fichiers ``run.py`` et ``setup.py``. Que remarquez vous? Pouvez-vous utiliser vos connaissances acquises au cours de l'exercice précédent pour corriger le problème en ajustant la date incorrecte à la date courante?
+
+    .. code:: bash
+
+            stat student/run.py
+            stat student/setup.py
+
+    2. Pouvez-vous créer le fichier ``conf.py`` dans le répertoire ``student`` en utilisant la commande ``touch``.
+
+    Vous pouvez avoir de l'aide pour chacune des commandes en visitant les pages du manuel en français ou en anglais.
+
+    ``stat``: En français `https://man.cx/stat <https://man.cx/stat>`_ et en anglais `https://man7.org/linux/man-pages/man1/stat.1.html <https://man7.org/linux/man-pages/man1/stat.1.html>`_
+
+    ``touch``: En français `https://man.cx/touch <https://man.cx/touch>`_ et en anglais `https://man7.org/linux/man-pages/man1/touch.1.html <https://man7.org/linux/man-pages/man1/touch.1.html>`_
+
+    Cliquer sur ``Soumettre`` pour avoir les credentials d'accès i.e le lien ssh et le mot de passe.
+environment_id: default
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Création de fichier
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

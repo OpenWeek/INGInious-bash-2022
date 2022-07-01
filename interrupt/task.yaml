@@ -1,0 +1,32 @@
+accessible: true
+author: Aurélien Buchet
+categories: []
+contact_url: ''
+context: |-
+    Parfois, vous aurez besoin de suspendre un processus qui s'exécute dans un terminal pour le reprendre plus tard.
+
+    Cela peut être fait en utiliser la commande ``ctrl+z`` qui va stopper le processus current et le sauver en arrière plan. Pour reprendre l'exécution, il faut taper ``fg``.
+
+    Dans le répertoire student se trouve un script ``loop.sh`` qui ne fait qu'afficher un message en boucle sur le terminal. Connectez-vous en ssh, lancez le programme à l'aide de ``./loop.sh`` et stoppez le.
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Suspendre l'exécution d'un programme
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

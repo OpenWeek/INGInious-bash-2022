@@ -1,0 +1,73 @@
+#!/bin/bash
+ssh_student --setup-script "./student/scripts/start.sh"
+
+
+# get ssh_log
+
+if [[ -f /task/student/.ssh_logs ]]; then
+	nb_stat_cmd=$(grep -o "stat" /task/student/.ssh_logs | wc -l )
+    nb_stat_on_run=$(grep -o "stat run.py" /task/student/.ssh_logs | wc -l )
+    nb_stat_on_setup=$(grep -o "stat setup.py" /task/student/.ssh_logs | wc -l )
+    logs=$(cat /task/student/.ssh_logs)
+fi
+
+# get run.py setup.py informations and current date
+
+current_date=$(date -I)
+run_access_date=$(stat student/run.py | grep "Access" | grep -o "$current_date" | wc -l)
+setup_access_date=$(stat student/setup.py | grep "Access" | grep -o "$current_date" | wc -l)
+run_modif_date=$(stat student/run.py | grep "Modify" | grep -o "$current_date" | wc -l)
+setup_modif_date=$(stat student/setup.py | grep "Modify" | grep -o "$current_date" | wc -l)
+
+if [[ $nb_stat_cmd -eq 0 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas utilisé la commande ``stat`` pour avoir les informations des fichiers run.py et setup.py. La commande stat permet d'avoir les information concernant la date d'accès et de modification d'un fichier. Vous pouvez consulter le manuel ``man stat`` " | feedback-msg -ae
+fi
+
+if [[ $nb_stat_on_run -lt 1 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas vérifié les informations du fichier run.py en utilisant la commande stat. Veuillez relire la consigne." | feedback-msg -ae
+fi
+
+if [[ $nb_stat_on_setup -lt 1 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas vérifié les informations du fichier setup.py en utilisant la commande stat. Veuillez relire la consigne." | feedback-msg -ae
+fi
+
+if [[ $run_access_date -ne 1 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas pu modifier la date d'accès du fichier run.py. Veuillez consulter le manuel de ``man touch`` pour plus d'informations sur la bonne option pour modifier la date d'accès d'un fichier" | feedback-msg -ae
+fi
+
+if [[ $setup_access_date -ne 1 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas pu modifier la date d'accès du fichier setup.py. Veuillez consulter le manuel de ``man touch`` pour plus d'information sur la bonne option pour modifier la date d'accès d'un fichier" | feedback-msg -ae
+fi
+
+if [[ $run_modif_date -ne 1 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas pu modifier la date de modification du fichier run.py. Veuillez consulter le manuel de ``man touch`` pour plus d'informations sur la bonne option pour modifier la date d'accès d'un fichier" | feedback-msg -ae
+fi
+
+if [[ $setup_modif_date -ne 1 ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas pu modifier la date de modification du fichier setup.py. Veuillez consulter le manuel de ``man touch`` pour plus d'information sur la bonne option pour modifier la date d'accès d'un fichier" | feedback-msg -ae
+fi
+
+if ! [[ -f /task/student/conf.py ]]; then
+	rst-msgblock -c info -m "Vous n'avez pas pu créer le fichier conf.py. Veuillez consulter le manuel de ``man touch`` pour plus d'information sur comment créer un fichier" | feedback-msg -ae
+fi
+
+if [[ $setup_modif_date -eq 1 ]] && [[ $run_modif_date -eq 1 ]] && [[ $setup_access_date -eq 1 ]] && [[ $run_access_date -eq 1 ]] && [[ $nb_stat_on_setup -gt 0 ]] && [[ $nb_stat_on_run -gt 0 ]] && [[ $nb_stat_cmd -gt 0 ]] && [[ -f /task/student/conf.py ]]; then
+	feedback-result success
+	feedback-msg  -a -m "Félicitation!! vous avez pu actualiser les dates d'accès et de modification des fichier run.py et setup.py. Vous pouvez passer à l'exercice suivant."
+    feedback-grade 100
+    exit
+fi
+
+if [[ $setup_modif_date -eq 1 ]] && [[ $run_modif_date -eq 1 ]] && [[ $setup_access_date -eq 1 ]] && [[ $run_access_date -eq 1 ]]  && [[ -f /task/student/conf.py ]]; then
+	feedback-result failed
+	feedback-msg  -a -m "Vous n'avez pas répondu à la consigne. Veuillez suivre les instructions ci-dessus pour avoir des pistes de solutions"
+    feedback-grade 90
+    exit
+fi
+
+if [[ $setup_modif_date -eq 1 ]] && [[ $run_modif_date -eq 1 ]] && [[ $setup_access_date -eq 1 ]] && [[ $run_access_date -eq 1 ]] ; then
+	feedback-result failed
+	feedback-msg  -a -m "Vous n'avez pas répondu à la consigne. Veuillez suivre les instructions ci-dessus pour avoir des pistes de solutions"
+    feedback-grade 60
+    exit
+fi

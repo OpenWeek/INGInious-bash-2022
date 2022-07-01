@@ -1,0 +1,81 @@
+accessible: true
+author: Emery Assogba
+categories:
+- qcm
+- simple
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``mkdir`` permet de créer un répertoire.
+
+
+    La page du manuel est disponible en anglais via `https://man7.org/linux/man-pages/man1/mkdir.1.html <https://man7.org/linux/man-pages/man1/mkdir.1.html>`_ et en français via `https://man.cx/mkdir <https://man.cx/mkdir>`_
+
+    Nous allons nous familiariser avec l'utilisation de cette commande.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de mkdir
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: |-
+            Vous devriez créer l'aborescence suivante dans votre répertoire courant:
+
+            .. code:: bash
+
+                local/lib/python
+
+            Quelle est la commande appropriée?
+
+            .. note::
+
+                Aucun des répertoires ``local``, ``local/lib`` et ``local/lib/python`` n'existe encore dans votre répertoire courant.
+        limit: 0
+        choices:
+        -   text: mkdir local/lib/python
+            feedback: |
+                Les sous répertoires lib et lib/python n'existant pas cette commande retournera un message d'erreur.
+
+                Veuillez consulter le manuel `https://man.cx/mkdir <https://man.cx/mkdir>`_ en français et `https://man7.org/linux/man-pages/man1/mkdir.1.html <https://man7.org/linux/man-pages/man1/mkdir.1.html>`_
+        -   text: mkdir -p local/lib/python
+            feedback: Félicitation
+            valid: true
+        -   text: mkdir-p local/lib/python
+            feedback: |
+                L'espace entre ``mkdir`` et ``-p`` est important sinon le shell intèpretera la commande comme ``mkdir-p`` qui n'existe pas.
+
+                Veuillez consulter le manuel `https://man.cx/mkdir <https://man.cx/mkdir>`_ en français et `https://man7.org/linux/man-pages/man1/mkdir.1.html <https://man7.org/linux/man-pages/man1/mkdir.1.html>`_
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

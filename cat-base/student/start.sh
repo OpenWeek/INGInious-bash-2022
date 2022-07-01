@@ -1,0 +1,1 @@
+echo "Mot de passe : 1234\n" > /task/student/.motDePasse.txt

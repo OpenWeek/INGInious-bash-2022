@@ -1,0 +1,32 @@
+accessible: true
+author: Séverin Robert, Walter Merlini
+categories: []
+contact_url: ''
+context: |-
+    Les examens approchant, votre ami, qui n'est pas très attentifs durant les cours, vous supplie de lui envoyez vos notes de cours et vous promet de vous mettre all-in à votre prochaine soirée. Malheureusement vous avez été si bon élève que vos dossiers son trop volumineux pour pouvoir être envoyés tel quel.
+
+    Il vous faut donc archiver vos cours qui se trouvent dans le dossier ``/student/mescours/``. Vous décidez d'essayer deux archiveurs connus ``tar`` et ``zip``, placez-vous dans le dossier ``/student/`` et utilisez ces deux commandes pour compresser le dossier. Les noms d'archive doivent être ``mescours.tar`` et ``mescours.zip``.
+
+    Lien du man de tar https://man7.org/linux/man-pages/man1/tar.1.html et de zip https://ss64.com/bash/zip.html
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Compression avec ZIP et TAR.
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

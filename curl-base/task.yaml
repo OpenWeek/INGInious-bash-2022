@@ -1,0 +1,70 @@
+accessible: true
+author: Emery Assogba, Nathan Tihon
+categories:
+- simple
+- interactif
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``curl`` permet de transférer des URL d'un serveur à un client ou d'un client à un serveur via l'un des protocoles (``DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, MQTT, POP3, POP3S, RTMP, RTMPS, RTSP, SCP, SFTP, SMB, SMBS, SMTP, SMTPS, TELNET and TFTP``).
+    Tapez ``man curl`` pour accéder à la page de manuel de cette commande. Elle est aussi disponible en anglais via `https://man7.org/linux/man-pages/man1/curl.1.html <https://man7.org/linux/man-pages/man1/curl.1.html>`_
+
+    Vous êtes intéressé par les cryptomonnaies, et tout particulièrement le Bitcoin. Vous avez besoin de données historiques les plus précises possibles pour être sûr d'acheter du Bitcoin au bon moment. En effet vous voudriez éviter l'acheter à 58000\$ pour ensuite le voir tomber à 35000\$.
+
+    Après avoir fait quelques recherches, vous avez trouvé que Binance permettait de télécharger gratuitement leur données.
+
+    #. Pouvez-vous utiliser ``curl`` pour récupérer le contenu se trouvant à `https://data.binance.vision/data/spot/monthly/klines/BTCEUR/1h/BTCEUR-1h-2020-08.zip` et l'enregister dans le fichier ``data.zip``? (il vous faudra aller lire la page de manuel de la commande ``curl`` pour savoir comment enregistrer cela dans un fichier)
+
+    #. Vous remarquez que ce fichier vous est fourni sous format ``.zip``, il vous faudrait alors l'extraire pour pouvoir l'utiliser. La commande utilisée pour extraire des fichiers au format ``.zip`` est la commande `unzip <https://www.freebsd.org/cgi/man.cgi?query=unzip&sektion=1>`_.
+
+    Vous avez maintenant un fichier au format ``.csv`` que vous pourrez traiter à votre convenance pour vos achats de Bitcoin.
+
+    Connectez vous par ``ssh`` sur le serveur INGInious et essayer de résoudre l'exercice. Attention, tous les fichiers que vous aurez téléchargé/extrait doivent se retrouver dans le répertoire ``student`` !
+
+    .. Note::
+
+        Cet exercice est purement fictif et n'est pas un conseil d'investissement. Investir comporte des risques.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: '150'
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: La commande curl
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

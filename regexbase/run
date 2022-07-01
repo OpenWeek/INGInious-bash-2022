@@ -1,0 +1,12 @@
+#!/bin/bash
+ssh_student
+
+answer="$(cat /task/student/coupable.txt)"
+
+if [[ $answer == "Georges-Édouard Vidal" ]]; then 
+	feedback-result success
+    feedback-msg -m "Bravo vous avez trouvez le bon coupable !"
+else
+	feedback-result failed
+    feedback-msg -m "$answer n'est pas le bon coupable !"
+fi

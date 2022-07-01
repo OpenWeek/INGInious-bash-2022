@@ -1,0 +1,74 @@
+accessible: true
+author: Nathan Tihon
+categories:
+- interactif
+- simple
+contact_url: ''
+context: |-
+    Dans cet exercice, vous allez devoir utiliser la commande `mv <https://man7.org/linux/man-pages/man1/mv.1.html>`_ afin de déplacer des fichiers.
+
+    Pendant votre premier blocus, vous avez bien pris soins de ranger vos documents de cours dans les fichiers que vous aviez créés à cet effet. Mais vous étiez fatigués et vous avez commis quelques erreurs que vous aimeriez rectifier au plus vite.
+
+    Vous devez retrier les fichiers suivants et les placer dans les bons répertoires :
+
+    * philo-concepts.txt
+    * info-data-structure.txt
+    * philo-theorie.txt
+    * info-tuyaux.txt
+    * info-projet.py
+
+    Comme vous êtes un étudiant méticuleux, vous avez fait attention, les fichiers devant se trouver dans le répertoire ``informatique`` sont nommés de cette manière : ``info-...`` et les fichiers devant se trouver dans le répertoire ``philosophie`` sont nommés comme suit : ``philo-...``. Cette nomenclature pourrait vous permettre de les trier bien plus rapidement.
+
+    .. code:: bash
+
+        student
+        |-------2021
+                |-- informatique
+                |--philo
+
+    Connectez vous par ssh, déplacez-vous dans le répertoire ``student`` et remettez vite de l'ordre avant que cela pose des problèmes dans votre blocus.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '50'
+        hard_time: '200'
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Déplacement de fichiers
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

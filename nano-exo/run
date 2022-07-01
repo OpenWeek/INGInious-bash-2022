@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ssh_student
+
+student="$(cat student/text.txt)"
+
+
+if [[ "$student" == "Hello World !" ]] ; then
+    feedback-msg -m "Félicitation, vous avez bien modifié le fichier !"
+    feedback-result success
+else
+    feedback-msg -e -m "Le fichier ne contient pas le bon string : \n expected : Hello World ! | found : $student"
+    feedback-result failed
+fi

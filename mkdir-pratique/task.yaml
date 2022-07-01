@@ -1,0 +1,65 @@
+accessible: true
+author: Emery Assogba,Nathan Tihon
+categories:
+- simple
+- interactif
+contact_url: ''
+context: |-
+    Votre frère vous a demandé de l'aider pour ranger les fichiers sur son ordinateur. Pour cela vous devez créer les sous-répertoires suivants dans lesquels il pourra stocker les fichiers concernant chacun de ses cours..
+
+    .. code:: bash
+
+        student
+        |-------2021
+                |-- informatique
+                |              |--examen
+                |---philo
+                        |---examen
+
+
+    Connectez-vous par ssh et aidez votre frère à créer les répertoires.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: default
+environment_parameters:
+    limits:
+        time: '180'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Création de répertoires
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

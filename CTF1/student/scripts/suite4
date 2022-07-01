@@ -1,0 +1,24 @@
+#! /bin/bash
+
+echo "Vous attendez"
+sleep 1
+echo "	."
+sleep 1
+echo "	."
+sleep 1
+echo "	."
+tp1=$(ps -e | grep "TEMPS <defunct>")
+tp2=$(ps -e | grep TEMPS)
+if [  "$tp1" == "" || "$tp2" != ""  ]
+then
+	echo "Le professeur n'arrive toujours pas, vous devez encore tuer le temps"
+else
+	echo "Vous voyez le Professeur Van Roy arriver, vous prenez tout votre courage et commencez à lui parler. Il vous écoute jusqu'au bout puis, quand vous avez fini, vous répond
+- Oui, mais pour ça, envoyez-moi un mail
+Et il rentre dans son bureau."
+	echo "Voila le CTF est terminé, le code à copier-coller dans inginious est le suivant :"
+	
+	cd ../../.ressources/script
+	./next foobar
+	cat hash
+fi

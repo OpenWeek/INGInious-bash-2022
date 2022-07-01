@@ -1,0 +1,21 @@
+#!/bin/bash
+
+ssh_student
+
+number_of_git_init=$(cat /task/student/.ssh_logs | grep "git init" | wc -l)
+number_of_git_add=$(cat /task/student/.ssh_logs | grep "git add" | wc -l)
+number_of_correct_line=$(cat /task/student/.gitignore | grep config.py | wc -l)
+
+if [[ $number_of_git_init < 1 ]]; then
+    feedback-msg -m "Vous n'avez pas fait de git init !"
+    feedback-result failed
+elif [[ $number_of_correct_line != 1 ]]; then
+    feedback-msg -m "Vous n'avez pas le bon contenu dans le .gitignore !"
+    feedback-result failed
+elif [[ $number_of_git_add < 1 ]]; then
+    feedback-msg -m "Vous n'avez pas fait de git add !"
+    feedback-result failed
+else
+    feedback-msg -m "Bravo ! Vous avez bien compris la commande !"
+    feedback-result success
+fi

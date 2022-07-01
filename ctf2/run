@@ -1,0 +1,28 @@
+#!/bin/bash
+
+username=$(getinput @username)
+
+ssh_student --setup-script "bash student/scripts/start.sh"  --teardown-script "bash student/scripts/end.sh $username obo > student/code"
+
+logs=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2)
+
+
+s=$(./student/end.sh "$username" obo > student/code )
+code=$(cat student/code)
+student=$(cat student/"$username")
+files=$(ls student/scripts)
+
+
+if [[ ! -f student/"$username"  ]]; then
+	rst-msgblock --class warning --message "Vous n'avez pas créer le fichier student/$username pour y mettre le code "  | feedback-msg -a -e
+    feedback-result failed
+    exit
+fi
+
+if [[  "$code" == "$student" ]];then
+	feedback-result success
+    rst-msgblock --class warning --message "Bravo vous avez réussir le CTF"  | feedback-msg -a
+else
+	rst-msgblock --class warning --message "Les commandes que vous avez saisis sont: **$logs**"  | feedback-msg -a -e
+    feedback-result failed
+fi

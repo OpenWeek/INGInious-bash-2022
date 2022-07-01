@@ -1,0 +1,8 @@
+#!/bin/bash
+ssh_student --setup-script "python3 student/start.py" --teardown-script "/bin/bash -c 'ps -aux > student/final_running_process.txt'"
+
+if ! grep -q "hacked" /task/student/final_running_process.txt; then
+  feedback-result success
+else
+	feedback-result failed
+fi

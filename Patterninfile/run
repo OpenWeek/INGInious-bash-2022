@@ -1,0 +1,37 @@
+#!/bin/bash
+
+random_input=`getinput @random`
+set -- $random_input
+# Get the random value and convert it to index in files data set
+rand1=`echo "$1" | grep -Eo '[0-9]+([.][0-9]+)?'`
+rand2=`echo "$2" | grep -Eo '[0-9]+([.][0-9]+)?'`
+rand3=`echo "$3" | grep -Eo '[0-9]+([.][0-9]+)?'`
+
+index1=`echo "print(int(($rand1*100) % 7))" | python3`
+index2=`echo "print(int(($rand2*100) % 7))" | python3`
+index3=`echo "print(int(($rand3*100) % 7))" | python3`
+
+#index1=`bc <<< "scale=0; (($rand1)*100)%7" | awk '{printf("%d\n",$1)}' `
+#index2=`bc <<< "scale=0; (($rand2)*100)%7" | awk '{printf("%d\n",$1)}' `
+#index3=`bc <<< "scale=0; (($rand3)*100)%7" | awk '{printf("%d\n",$1)}' `
+
+softs=("geo" "histoire" "anglais"  "maths"  "bio"  "geometrie"  "algebre")
+paterns=("break" "alarm" "strcmp" "memcpy" "atoi"  "strsignal"  "pipe")
+files=("resultat.out" "reponse.out" "resultats.out"  "reponses.out" "mareponse.out"  "monresultat.out"  "valeur.out")
+
+soft=${softs[$index1]}
+patern=${paterns[$index2]}
+file=${files[$index3]}
+
+ssh_student --setup-script "bash /task/student/start.sh /task/student/$soft"
+
+solution=$(grep -r -m 1 "$patern" /task/student/"$soft" | wc -l)
+student=$(cat /task/student/"$file")
+
+if [ "$student" = "$solution" ]; then
+	feedback-result success
+    feedback-msg  -m "Félicitation vous avez élucidé l'énigme"
+else
+	feedback-result failed
+    feedback-msg  -m "Vous n'avez pas encore élucidé l'énigme. Vous pouvez avoir plus d'information en visitant la page du manuel de la commande grep https://man.cx/grep"
+fi 

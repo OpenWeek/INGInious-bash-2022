@@ -1,0 +1,32 @@
+accessible: true
+author: HUET Anatole
+categories: []
+contact_url: ''
+context: |-
+    Le répertoire ``student`` contient un projet avec un Readme et un fichier de config.py qui contient des mots de passes. Vous voulez faire un repository git mais sans pour autant partager vos mots de passes.
+
+    Heureusement, il existe la possibillité de créer un fichier .gitignore dans lequel vous pouvez indiquer les fichiers à ne pas ajouter à votre projet git (ici votre fichier config.py).
+
+    Faites donc un ``git init`` pour initialiser un projet, créez et rajoutez le contenu adéquat dans .gitignore et enfin faites un ``git add .`` pour rajouter les fichiers.
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Exercice sur gitignore
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

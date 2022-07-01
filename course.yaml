@@ -1,0 +1,183 @@
+accessible: true
+name: Ligne de commande Unix/Linux
+description: |+
+    Apprentissage de la ligne de commande Unix/Linux via des exercices simples.
+
+admins:
+- Anahue
+- Countermatt
+- Monk
+- aubuchet
+- bonaventure
+- eassogba
+- gcreupelandt
+- michelfra
+- obonaventure
+- olivierbonaventure
+- severin
+- wmerlini
+tutors: []
+groups_student_choice: false
+allow_unregister: false
+allow_preview: true
+registration: false
+registration_password: null
+registration_ac: null
+registration_ac_list: []
+is_lti: true
+lti_url: https://beta.computer-networking.info/syllabus/cli/shell-theorie.html
+lti_keys:
+    interactivesyllabuscli: xch8hYcrmdYvcQUPU
+lti_send_back_grade: false
+task_dispenser: toc
+dispenser_data:
+-   config:
+        closed: false
+    id: new_section
+    rank: 0
+    tasks_list:
+        CTF1: 21
+        Patterninfile: 14
+        appendtofile: 13
+        ar-base: 18
+        cat-base: 8
+        ccm-cat: 7
+        creationfichier-base: 11
+        creationfichier-qcm: 16
+        ctf2: 22
+        curl-hard: 17
+        grep-base: 10
+        head-base: 9
+        ls-base: 3
+        ls-cd-mcq: 0
+        mkdir-base: 1
+        mkdir-pratique: 2
+        mv-pratique: 4
+        pipe-base: 15
+        psandkill: 20
+        qcm-sort: 12
+        rm-base: 6
+        rm-qcm: 5
+        tri-fichiers-pratique: 19
+    title: Exercices du syllabus
+-   config:
+        closed: false
+    id: exercices_supplmentaires
+    rank: 1
+    tasks_list:
+        backupfiles: 2
+        catusage: 0
+        curl-base: 3
+        touch-pratique: 1
+    title: Exercices supplémentaires
+-   config:
+        closed: false
+    id: work_in_progress
+    rank: 2
+    tasks_list:
+        Minimumincsv: 10
+        cft-1-ssh: 2
+        cksum-base: 13
+        exo-merge-conflict: 7
+        git-exo: 5
+        grep: 11
+        interrupt: 12
+        man: 1
+        nano-exo: 0
+        projet_c: 8
+        redirections: 9
+        regexbase: 6
+        script: 4
+        ziptar: 3
+    title: Open Week
+-   config:
+        closed: false
+    id: pas_test
+    rank: 3
+    tasks_list:
+        screen: 0
+    title: Pas testé
+tags:
+    advanced:
+        name: advanced
+        description: Utilisation avancée des commandes
+        visible: true
+        type: 0
+    interactif:
+        name: interactif
+        description: L'exercice nécéssite la connexion par ssh aux serveur INGInious
+        visible: true
+        type: 0
+    medium:
+        name: medium
+        description: Utilisation moyennement avancée des commandes
+        visible: true
+        type: 0
+    qcm:
+        name: qcm
+        description: qcm
+        visible: true
+        type: 0
+    simple:
+        name: simple
+        description: Exercice simple d'utilisation et de prise en main des commandes
+        visible: true
+        type: 0
+toc:
+-   id: new_section
+    rank: 0
+    tasks_list:
+        CTF1: 21
+        Patterninfile: 14
+        appendtofile: 13
+        ar-base: 18
+        cat-base: 8
+        ccm-cat: 7
+        creationfichier-base: 11
+        creationfichier-qcm: 16
+        ctf2: 22
+        curl-hard: 17
+        grep-base: 10
+        head-base: 9
+        ls-base: 3
+        ls-cd-mcq: 0
+        mkdir-base: 1
+        mkdir-pratique: 2
+        mv-pratique: 4
+        pipe-base: 15
+        psandkill: 20
+        qcm-sort: 12
+        rm-base: 6
+        rm-qcm: 5
+        tri-fichiers-pratique: 19
+    title: Exercices du syllabus
+-   id: exercices_supplmentaires
+    rank: 1
+    tasks_list:
+        backupfiles: 2
+        catusage: 0
+        curl-base: 3
+        touch-pratique: 1
+    title: Exercices supplémentaires
+-   id: open_week
+    rank: 2
+    tasks_list: {}
+    title: Open Week
+-   id: work_in_progress
+    rank: 3
+    tasks_list:
+        Minimumincsv: 10
+        cft-1-ssh: 2
+        exo-merge-conflict: 7
+        git-exo: 5
+        grep: 11
+        interrupt: 12
+        man: 1
+        nano-exo: 0
+        projet_c: 8
+        redirections: 9
+        regexbase: 6
+        script: 4
+        ziptar: 3
+    title: Work In Progress
+registration_ac_accept: true

@@ -1,0 +1,185 @@
+accessible: true
+author: Emery Assogba
+categories:
+- simple
+- qcm
+contact_url: ''
+context: |-
+    Sous Unix, la commande ``grep`` permet d'afficher à l'écran les lignes d'un fichier contenant un modèle de chaine de caractère.
+
+
+    La page du manuel est disponible en anglais via `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_ et en français via `https://man.cx/grep <https://man.cx/grep>`_
+
+    Nous allons nous familiariser avec l'utilisation de cette commande.
+
+    Vous avez un fichier texte contenant la liste des étudiants inscrits en BAC1 à l'UCL cette année ``etudiants.txt``.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de la commande grep
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: Vous désirez vérifier si votre ami ``Dubois`` fait partie de la liste.
+            Quelle commande utiliserez vous?
+        limit: 0
+        success_message: Félicitation vous avez trouvé la bonne réponse. Veuillez
+            consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_ en français
+            et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        error_message: Veuillez consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_
+            en français et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    grep Dubois etudiants.txt
+            feedback: Bonne réponse. La commande ``grep`` affiche par défaut les lignes
+                d'un fichier contenant  une chaîne de caractère.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    grep etudiants.txt Dubois
+            feedback: La syntaxe n'est pas correcte. Consulter la description de la
+                commande dans la section ``DESCRIPTION`` des liens ci-dessus.
+        -   text: |-
+                .. code:: console
+
+                    grepDubois etudiants.txt
+            feedback: 'Faites attention. Il faut toujours un espace entre la commande
+                ``grep`` et le modèle à rechercher. Sinon l''interpreteur considère
+                la commande ``grepDubois``, qui n''existe pas. '
+    q2:
+        type: multiple_choice
+        name: ''
+        header: Vous désirez vérifier si votre ami ``Dubois`` fait partie de la liste,
+            sans ouvrir le fichier, mais vous n'êtes pas sûr de l'écriture exacte
+            du nom de votre ami. Peut-être que c'est ``DUBOIS`` ou ``Dubois``  ou
+            ``dubois``. Quelle commande utiliserez vous?
+        limit: 0
+        success_message: Félicitation vous avez trouvé la bonne réponse. Veuillez
+            consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_ en français
+            et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        error_message: Veuillez consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_
+            en français et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    grep Dubois dubois etudiants.txt
+            feedback: Cette réponse ne respecte pas la syntaxe de la commande ``grep``.
+                Veuillez consulter le manuel à travers les liens ci-dessus. Consultez
+                surtout la section ``DESCRIPTION``.
+        -   text: |-
+                .. code:: console
+
+                    grep -i Dubois etudiants.txt
+            feedback: Avec l'option ``-i`` la commande ``grep`` ignore la case. C'est
+                à dire qu'elle ne fait pas la différence entre les majuscules et les
+                minuscules.
+            valid: true
+    q3:
+        type: multiple_choice
+        name: ''
+        header: Vous vous intéressez maintenant au numéro de la ligne où le nom de
+            votre ami se trouve. Quelle commande utiliserez-vous?
+        limit: 0
+        success_message: Félicitation vous avez trouvé la bonne réponse. Veuillez
+            consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_ en français
+            et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        error_message: Veuillez consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_
+            en français et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    grep -n Dubois etudiants.txt
+            feedback: Bonne réponse, avec l'option ``-n`` grep affiche aussi les numéro
+                de ligne où se trouve le modèle.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    grep -m 200 Dubois etudiants.txt
+            feedback: L'option ``-m NUM`` est plutôt utilisée pour demander à grep
+                de stopper la recherche du modèle après avoir parcouru NUM lignes.
+        -   text: |-
+                .. code:: console
+
+                    grep -r Dubois etudiants.txt
+            feedback: L'option ``-r`` demande à grep de faire la recherche de façon
+                récursive. c'est à dire que si ``FILE`` est un répertoire, il doit
+                continuer la recherche dans ses sous répertoires et ses fichiers.
+    q4:
+        type: multiple_choice
+        name: ''
+        header: Vous désirez maintenant afficher les noms de tous les autres étudiants
+            mais pas celui de ``Dubois``.
+        limit: 0
+        success_message: Félicitation vous avez trouvé la bonne réponse. Veuillez
+            consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_ en français
+            et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        error_message: Veuillez consulter le manuel `https://man.cx/grep <https://man.cx/grep>`_
+            en français et `https://man7.org/linux/man-pages/man1/grep.1.html <https://man7.org/linux/man-pages/man1/grep.1.html>`_
+            en anglais pour plus d'informations sur la commande ``grep``
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    grep -v Dubois etudiants.txt
+            feedback: Bonne réponse!! Avec l'option ``-v`` la commande ``grep`` affiche
+                les lignes ne contenant pas la chaîne de caractère.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    grep -n Dubois etudiants.txt
+            feedback: Avec l'option ``-n`` la commande grep affiche les numéros de
+                ligne où la chaîne apparait.
+        -   text: |-
+                .. code:: console
+
+                    grep -c Dubois etudiants.txt
+            feedback: Avec l'option ``-c`` la commande grep affiche le nombre de ligne
+                contenant la chaîne de caractère.
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

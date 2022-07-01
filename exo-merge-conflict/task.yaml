@@ -1,0 +1,38 @@
+accessible: true
+author: HUET Anatole
+categories: []
+contact_url: ''
+context: |-
+    Le dosier ``student`` contient un repository git qui contient déjà un fichier. Cependant, vous aimeriez apporter des changements à celui-ci. Une manière la plus courante pour le faire est de créer une nouvelle branche avec la commande ``git checkout``. Une fois que vous êtes sur la nouvelle branche, modifiez le contenu du fichier file par ``Hello World !``. Par la suite, effectuez un ```git add`` et ``git commit`` pour valider vos changements. Revenez sur la branche master avec ``git checkout`` et modifiez le contenu du fichier file par ``Nouveau contenu de la branche master``. Notez que les changements sur l'autre branche ne sont pas effectifs sur la branche master. Utilisez la commande ``git merge`` afin de fusionner les changements.
+
+    Que se passe-t-il ? Il y a un conflit car la même ligne a été changée en deux versions différentes. Il faut donc indiquer la version correcte à git. Notez que vous êtes sur une branche séparées lors d'un conflit. Pour indiquer la bonne version, modifier le fichier en retirant les caractères bizarres et en mettant le bon contenu (en gardant donc le ``Hello World !``) et refaites un ``git add`` et ``git commit`` pour finaliser le merge.
+
+
+    **Pour cet exercice il est vivement conseillé de jeter un coup d'oeil aux manpages suivantes :**
+
+    - manpage pour git commit : https://manpages.debian.org/buster/git-man/git-commit.1.en.html
+    - manpage pour git checkout : https://manpages.debian.org/buster/git-man/git-checkout.1.en.html
+    - manpage pour git add : https://manpages.debian.org/buster/git-man/git-add.1.en.html
+    - manpage pour git merge : https://manpages.debian.org/buster/git-man/git-merge.1.en.html
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Exercice git conflit
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

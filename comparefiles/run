@@ -1,0 +1,29 @@
+#!/bin/bash
+
+random_input=$(getinput @random)
+set -- $random_input
+# Get the random value and convert it to index in files data set
+rand1=`echo "$1" | grep -Eo '[0-9]+([.][0-9]+)?'`
+rand2=`echo "$2" | grep -Eo '[0-9]+([.][0-9]+)?'`
+index1=$(bc <<< "scale=0; (($rand1)*100)%7" | awk '{printf("%d\n",$1)}' )
+index2=$(bc <<< "scale=0; (($rand2)*100)%7" | awk '{printf("%d\n",$1)}' )
+set1=("main.c"  "arthm.java"  "setup.py"  "conf.sh"  "data.csv" "apache.conf" "index.html")
+set2=("maiN.c"  "arthM.java"  "seTup.py"  "coNf.sh" "dAta.csv"  "aPache.conf" "inDex.html")
+file1=${set1[$index1]}
+file2=${set2[$index2]}
+
+ssh_student --setup-script "python3 /task/student/start.py $file1 $file2"
+
+
+if [ -f /task/student/.ssh_logs ]; then
+	logs=$(grep "worker@" /task/student/.ssh_logs | cut -d'$' -f2 )
+    display=$(grep "public static void main(String args" /task/student/.ssh_logs )
+fi
+
+if [ "$display" = "" ]; then
+	feedback-msg -em "Congratulation you use the right command: $logs $display"
+	feedback-result success
+else
+	feedback-msg -em "You used the wrong commands : $logs !"
+	feedback-result failed
+fi

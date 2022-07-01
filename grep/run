@@ -1,0 +1,35 @@
+#!/bin/bash
+
+ssh_student
+
+
+
+echo "Crime" > student/correct.txt
+echo "Dreyfus" >> student/correct.txt
+echo "Guerre" >> student/correct.txt
+echo "Vérité" >> student/correct.txt
+echo "Commandant" >> student/correct.txt
+echo "Affaire" >> student/correct.txt
+echo "Justice" >> student/correct.txt
+echo "Accuse" >> student/correct.txt
+echo "Acte" >> student/correct.txt
+echo "Preuves" >> student/correct.txt
+
+cat student/correct.txt
+cat student/answer.txt
+echo $(diff -s student/answer.txt student/correct.txt)
+
+
+if [ ! -f "student/answer.txt" ]; then
+    feedback-msg -eam "Le fichier demandé n'a pas été trouvé."
+    feedback-result failed
+else 
+    if [[ $(diff -s student/answer.txt student/correct.txt) == "Files student/answer.txt and student/correct.txt are identical" ]]; then
+    feedback-msg -aem "Félicitation, tu as réussis l'exercice!"
+    feedback-result success
+    else
+        feedback-msg -aem "Le classement n'est pas bon :( ."
+        feedback-result failed
+    fi
+fi
+

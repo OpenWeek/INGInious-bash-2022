@@ -1,0 +1,70 @@
+#!/bin/bash
+
+ssh_student
+
+#création des fichiers de correction
+
+cd student
+
+tar -cf mescoursCorr.tar mescours
+zip -r mescoursCorr.zip mescours
+
+GRADE=0
+
+#vérification de la présence des fichiers demandés
+
+if [ ! -f "mescours.tar" ]; then
+    feedback-msg -eam "Il n'y a pas de fichier .tar ou il n'a pas été compressé correctement. \n"
+fi
+
+if [ ! -f "mescoursCorr.tar" ]; then
+    feedback-msg -aem "Erreur Interne : No mescoursCorr.tar file."
+fi
+
+if [ ! -f "mescours.zip" ]; then
+    feedback-msg -aem "Il n'y a pas de fichier .zip ou il n'a pas été compressé correctement. \n"
+fi
+
+if [ ! -f "mescoursCorr.zip" ]; then
+    feedback-msg -eam "Erreur Interne : No mescoursCorr.zip file."
+fi
+
+
+
+#vérification sur les tar
+
+tar -t -f mescours.tar > myTarContent
+tar -t -f mescoursCorr.tar > myTar2Content
+
+echo $(diff -s myTarContent myTar2Content)
+
+if [[ $(diff -s myTarContent myTar2Content) == "Files myTarContent and myTar2Content are identical" ]]; then
+    feedback-msg -aem "mescours.tar correct. \n"
+    GRADE=$GRADE+50
+else
+    feedback-msg -aem "mescours.tar incorrect. \n"
+fi
+
+
+ntent
+#vérification sur le zip
+
+unzip -l mescours.zip|tail -n +2 > myZipContent
+unzip -l mescoursCorr.zip|tail -n +2 > myZip2Content
+
+echo $(diff -s myZipContent myZip2Content)
+
+if [[ $(diff -s myZipContent myZip2Content) == "Files myZipContent and myZip2Content are identical" ]]; then
+    feedback-msg -aem "mescours.zip correct. \n"
+    GRADE=$GRADE+50
+else
+    feedback-msg -aem "mescours.zip incorrect. \n"
+fi
+
+feedback-grade $GRADE
+
+if [[ $GRADE -eq 100 ]]; then
+	feedback-result success
+else
+	feedback-result failed
+fi

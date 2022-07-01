@@ -1,0 +1,192 @@
+accessible: true
+author: Nathan Tihon
+categories:
+- qcm
+- simple
+contact_url: ''
+context: |-
+    Cet exercice a pour but de vous entrainer à la navigation dans un système de fichier Unix, il vous sera très utile pour les exercices pratiques qui suivront dans la séance.
+
+    Pour la durée de cet exercice, nous imaginerons l'arbre de fichiers suivant:
+
+    .. code:: bash
+
+        Dir
+        |   |Subdir1
+        |   |       |SubSubdir11
+        |   |Subdir2
+        |   |       |file21
+
+    Sauf indications contraires, le répertoire dans lequel vous vous trouvez est ``Dir``.
+
+    Les man-pages peuvent êtres retrouvées ici :
+
+    * `cd <https://man7.org/linux/man-pages/man1/cd.1p.html>`_
+    * `ls <https://man7.org/linux/man-pages/man1/ls.1.html>`_
+    * `pwd <https://man7.org/linux/man-pages/man1/pwd.1.html>`_
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Navigation dans les fichiers
+network_grading: false
+problems:
+    Q1:
+        type: multiple_choice
+        name: ''
+        header: Vous avez oublié dans quel répertoire vous vous situez, quelle commande
+            vous faut il taper ?
+        limit: 0
+        success_message: Bien joué ! C'est exactement ça.
+        error_message: Mmh, ce n'est pas tout à fait correct.
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    pwd
+            feedback: C'est bien la commande ``pwd`` qui permet d'afficher le répertoire
+                courant (elle signifie en fait *print-working-directory*)
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    ls
+            feedback: La commande ``ls`` ne permet pas d'afficher le répertoire courant,
+                mais plutôt le contenu de celui-ci.
+        -   text: |-
+                .. code:: console
+
+                    cd
+            feedback: La commande ``cd`` ne permet pas d'afficher le répertoire courant,
+                mais plutôt de modifier celui-ci (c'est à dire changer de répertoire
+                courant).
+    Q2:
+        type: multiple_choice
+        name: ''
+        header: Sélectionnez toutes les réponses correctes.
+        multiple: true
+        limit: 0
+        success_message: Bien joué ! Vous avez sélectionné toutes les bonnes réponses.
+        error_message: Ce n'est pas exactement ça.
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    $ ls
+                    Subdir1 Subdir2
+            feedback: C'est correct, lorsque vous vous situez dans le répertoire ``Dir``
+                et que vous appliquez la commande ``ls``, les deux repertoires contenus
+                dans ``Dir`` sont affiché sur la console
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    $ ls -a
+                    Subdir1 Subdir2
+            feedback: |-
+                C'est incorrect, lorsque vous appliquez la commande ``ls -a`` en vous situant dans le répertoire ``Dir``, tous les répertoires sont affichés (même les répertoires cachés). La sortie est donc :
+
+                .. code:: console
+
+                    $ ls -a
+                    .  ..  Subdir1  Subdir2
+        -   text: |-
+                .. code:: console
+
+                    $ cd Subdir1
+                    $ ls -R
+                    .:
+                    Subdir1  Subdir2
+
+                    ./Subdir1:
+                    SubSubdir11
+
+                    ./Subdir1/SubSubdir11:
+
+                    ./Subdir2:
+                    file12.txt
+            feedback: Cette réponse est incorrecte, la sortie fournie correspond à
+                la commande ``ls -R`` appliquée au répertoire ``Dir``. Or ici on se
+                trouve dans le répertoire ``Subdir1`` !
+        -   text: |-
+                .. code:: console
+
+                    $ ls -r
+                    .:
+                    Subdir1  Subdir2
+
+                    ./Subdir1:
+                    SubSubdir11
+
+                    ./Subdir1/SubSubdir11:
+
+                    ./Subdir2:
+                    file12.txt
+            feedback: Ceci est faux, il faut bien faire attention de ne pas mélanger
+                les options ``-r`` (reverse) et ``-R`` (recursive), la sortie présentée
+                ici correspond à la seconde option. La commande ``ls -r`` va simplement
+                donné un résultat inversé par rapport à la commande ``ls``
+    Q3:
+        type: multiple_choice
+        name: ''
+        header: Comment feriez vous pour vous déplacer jusqu'au fichier ``SubSubdir11``
+            ?
+        multiple: true
+        limit: 0
+        success_message: Bien joué, vous avez choisi toutes les réponses correctes.
+        error_message: Ce n'est pas exactement ça, mais vous pouvez réessayer en vous
+            aidant du feedback donné !
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    cd Subdir1/SubSubdir11
+            feedback: Ceci est une bonne réponse.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    cd Subdir1
+                    cd SubSubdir11
+            feedback: Ceci est une bonne réponse, bien qu'il est possible de faire
+                plus court.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    cd Subdir1\SubSubdir11
+            feedback: Ceci est incorrect, dans un système de fichier Unix, les répertoires
+                sont mit les un a la suite des autres séparés par des "slash" ``/``
+                et non des "backslash" ``\`` qui sont quant à eu utilisés dans les
+                systèmes de fichiers Windows.
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

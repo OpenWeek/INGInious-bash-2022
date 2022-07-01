@@ -1,0 +1,26 @@
+#!/bin/bash
+
+random_input=$(getinput @random)
+set -- $random_input
+# Get the random value and convert it to index in files data set
+rand=`echo "$1" | grep -Eo '[0-9]+([.][0-9]+)?'`
+index=`echo "print(int(($rand*100) % 7))" | python3`
+#index=$(bc <<< "scale=0; (($rand)*100)%7" | awk '{printf("%d\n",$1)}' )
+srcs=("src"  "bureau"  "documents"  "philo"  "geo"  "info"  "elec")
+dsts=("algo"  "program"  "langOOB"  "langJava" "Langage"  "algorithmique" "algoavances")
+src=${srcs[$index]}
+dst=${dsts[$index]}
+
+
+ssh_student --setup-script "python3 student/start.py $src "
+cfiles=50
+solution1=$(find student/"$src" -iregex ".*/*[.]java")
+solution2=$(find student/"$dst"  -iregex ".*/*[.]java" -exec ls -al {} \; | wc -l)
+if [  "$solution1" = ""  ] && [ $solution2 -eq $cfiles ]; then
+	feedback-msg  -m "Félicitation!! vous avez réussi à déplacer tous les fichiers java"
+	feedback-result success
+else
+	feedback-msg  -m "Vous n'avez pas déplacé tous les fichiers java"
+	feedback-result failed
+fi
+# find . -iregex ".*/*[.]java" -exec sh -c 'x="{}"; mv "$x" "dst/${x}"' \;

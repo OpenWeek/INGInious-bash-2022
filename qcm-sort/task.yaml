@@ -1,0 +1,67 @@
+accessible: true
+author: Olivier Bonaventure
+categories: []
+contact_url: ''
+context: |-
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Utilisation de la commande sort
+network_grading: false
+problems:
+    qcm:
+        type: multiple_choice
+        name: Options de la commande sort
+        header: |-
+            La commande ``uniq`` permet de retirer d'un fichier les lignes successives qui sont identiques. En consultant la page de manuel de la commande ``sort``, comment feriez-vous pour obtenir le même résultat que ``uniq`` avec un fichier *non-trié* ?
+
+            Vous pouvez avoir accès aux pages du manuel en français en anglais en cliquant sur les liens suivants:
+
+            ``sort``: en anglais `https://man7.org/linux/man-pages/man1/sort.1.html <https://man7.org/linux/man-pages/man1/sort.1.html>`_ et en français `https://man.cx/sort <https://man.cx/sort>`_
+
+            ``uniq``: en anglais `https://man7.org/linux/man-pages/man1/uniq.1.html <https://man7.org/linux/man-pages/man1/uniq.1.html>`_ et en français `https://man.cx/uniq <https://man.cx/uniq>`_
+        limit: 0
+        choices:
+        -   text: Ce qui est demandé est impossible
+        -   text: '``sort -R fichier.txt``'
+            feedback: Cette option demande à ``sort`` de mettre le fichier dans un
+                ordre aléatoire.
+        -   text: '``sort -f fichier.txt``'
+            feedback: Cette option demande à ``sort`` de ne pas faire de différence
+                entre les majuscules et les minuscules.
+        -   text: '``sort -c fichier.txt``'
+            feedback: Cette option demande à ``sort`` de simplement vérifier si le
+                fichier est trié.
+        -   text: '``sort -u fichier.txt``'
+            valid: true
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

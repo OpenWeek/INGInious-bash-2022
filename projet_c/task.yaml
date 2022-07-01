@@ -1,0 +1,47 @@
+accessible: true
+author: Buchet Aurélien
+categories:
+- medium
+contact_url: ''
+context: |-
+    Un ami vous a donné accès à un petit projet en C sur un server distant et vous voudriez vérifier qu'il fonctionne bien.
+
+    Les fichiers du projet se trouve dans le répertoire ``student/c_project``. Il contient tous les fichiers requis pour le compiler et pour exécuter le programme mais pas les tests. Vérifiez que l'exécutable est bien créé par le Makefile et ajoute une cible ``tests`` qui compile et lance le test CUnit qui est disponible. Attention que ce test utilise les headers du projets et doit être linké avec my_cool_implem.
+
+    La structure du projet est la suivante :
+
+    .. code:: bash
+
+        c_project
+            |-- headers
+            |        |-- my_cool_header.h
+            |-- src
+            |        |-- my_cool_implem.c
+            |-- tests
+            |        |-- test_cunit.c
+            |-- main.c
+            |-- Makefile
+
+    Appuyez sur soumettre pour débuter la session SSH.
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Compiler et exécuter un projet en C
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

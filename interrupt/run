@@ -1,0 +1,38 @@
+#!/bin/bash
+
+ssh_student
+
+logs="$(cat /task/student/.ssh_logs)"
+
+process="$(cat /task/student/.ssh_logs | grep loop.sh)"
+
+stopped=$(cat /task/student/.ssh_logs | grep "Stopped")
+
+echo "$process"
+
+echo "$stopped"
+
+grade=0
+
+if [[ -z "$process" ]]; then
+	feedback-msg -a -m "Vous n'avez pas utilisé le programme !"
+    feedback-result failed
+else
+	grade=$(($grade + 50))
+fi
+
+if [[ -z "$stopped" ]]; then
+	feedback-msg -a -m "Vous n'avez pas stoppé le programme !"
+    feedback-result failed
+else
+	grade=$(($grade + 50))
+fi
+
+echo $grade
+
+if [[ $grade -eq 100 ]]; then
+	feedback-msg -a -m "Vous avez réussi à stoppé le programme !"
+    feedback-result success
+fi
+    
+feedback-grade $grade

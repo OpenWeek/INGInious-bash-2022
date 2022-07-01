@@ -1,0 +1,192 @@
+accessible: true
+author: Emery Assogba
+categories: []
+contact_url: ''
+context: |-
+    Les fichiers sont des éléments essentiels d'un ordinateur. Nous allons voir dans cet exercice les possibilités qu'offre le ``shell`` pour les opérations de manipulation des fichiers.
+
+    .. raw:: html
+
+       <script defer>
+       bodyHeight = 0;
+       function postSize() {
+           if (document.body.scrollHeight != bodyHeight) {
+               bodyHeight = document.body.scrollHeight;
+               window.parent.postMessage({height: bodyHeight}, "*");
+           }
+       };
+       var target = document.querySelector('body');
+
+       var observer = new MutationObserver(postSize);
+
+       var config = { attributes: true, subtree: true }
+
+       observer.observe(target, config);
+       $(document).ready(function(){
+           document.querySelector('#content').style.minHeight = '';
+           setTimeout(postSize, 0);
+       });
+       </script>
+environment_id: mcq
+environment_parameters: {}
+environment_type: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Manipulation de fichiers
+network_grading: false
+problems:
+    q1:
+        type: multiple_choice
+        name: ''
+        header: Le fichier ``etudiants.txt`` n'existe pas encore dans le répertoire
+            courant. Parmi les commandes suivantes dites lesquelles permettront de
+            le créer.
+        multiple: true
+        limit: 0
+        choices:
+        -   text: |-
+                .. code:: console
+
+                     > etudiants.txt
+            feedback: Le symbole ``>`` suivi d'un nom de fichier permet de créer un
+                fichier.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                     touch etudiants.txt
+            feedback: La commande ``touch`` avec comme argument un nom de fichier
+                permet de créer ce dernier s'il n'existe pas.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                     echo "Hello" > etudiants.txt
+            feedback: La commande ``echo`` permet d'afficher le texte en argument
+                à l'écran. Le symbole ``>`` permet de faire une redirection de la
+                sortie standard vers le fichier. Le fichier est créer s'il n'existe
+                pas.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    echo "Hello" < etudiants.txt
+            feedback: La commande ``echo`` permet d'afficher le texte en argument
+                à l'écran. Le symbole ``<`` permet de faire une redirection de l'entrée
+                standard depuis le fichier. Il faut que le fichier existe d'abord.
+                Donc dans ce cas le fichier ne sera pas créé.
+        -   text: |-
+                .. code:: console
+
+                     < etudiants.txt
+            feedback: Le symbole ``<``  ne permet pas une création de fichier.
+    q2:
+        type: multiple_choice
+        name: ''
+        header: Parmi les commandes suivantes lesquelles serviront à supprimer le
+            fichier ``etudiants.txt`` ou le répertoire ``semestre`` contenant les
+            notes du semestre des étudiants en master.
+        multiple: true
+        limit: 0
+        choices:
+        -   text: |-
+                .. code:: bash
+
+                    rm etudiants.txt
+            feedback: Bravo! La commande ``rm`` permet de supprimer le fichier dont
+                le nom est passé en argument.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    rm semestre
+            feedback: La commande ``rm`` sans l'option qu'il faut ne permet pas de
+                supprimer un répertoire non vide. Consultez le manuel en ligne.
+        -   text: |-
+                .. code:: bash
+
+                    rmdir semestre
+            feedback: La commande ``rmdir`` ne permet pas de supprimer un répertoire
+                non vide. Consultez le manuel en ligne.
+        -   text: |-
+                .. code:: bash
+
+                    rm -r semestre
+            feedback: La commande avec l'option ``-r`` permet de supprimer un répertoire
+                et son contenu.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    rm -i etudiants.txt
+            feedback: La commande ``rm`` avec l'option ``-i`` permet la suppression
+                du fichier, mais avant de supprimer le fichier, l'avis de l'utilisateur
+                est demandée.
+        -   text: |-
+                .. code:: bash
+
+                    rm -f etudiants.txt
+            feedback: La commande ``rm`` avec l'option ``-f`` permet de forcer la
+                suppression du fichier.
+            valid: true
+    q3:
+        type: multiple_choice
+        name: ''
+        header: Parmi les commandes suivantes lesquelles permettront d'afficher sur
+            la sortie standard le contenu du fichier ``etudiants.txt``
+        multiple: true
+        limit: 0
+        choices:
+        -   text: |-
+                .. code:: console
+
+                    echo etudiants.txt
+            feedback: La commande ``echo`` permet d'afficher une chaîne de caractère
+                à l'écran, pas le contenu d'un fichier.
+        -   text: |-
+                .. code:: console
+
+                    cat etudiants.txt
+            feedback: Bravo!! La commande ``cat`` permet d'afficher le contenu du
+                fichier à l'écran.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    nl etudiants.txt
+            feedback: Bravo!! La commande ``nl`` permet d'afficher le contenu d'un
+                fichier à l'écran et en numérote les lignes
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    more etudiants.txt
+            feedback: Bravo!! La commande ``more`` permet d'afficher le contenu d'un
+                fichier à l'écran sur plusieurs pages.
+            valid: true
+        -   text: |-
+                .. code:: bash
+
+                    less etudiants.txt
+            feedback: Bravo!! La commande ``less`` permet d'afficher le contenu d'un
+                fichier à l'écran sur plusieurs pages.
+            valid: true
+        -   text: |-
+                .. code:: console
+
+                    mkdir etudiants.txt
+            feedback: La commande ``mkdir`` est plutôt utilisée pour la création de
+                répertoire.
+        -   text: |-
+                .. code:: console
+
+                    dir etudiants.txt
+            feedback: La commande ``dir`` est plutôt utilisée pour lister le contenu
+                d'un répertoire.
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

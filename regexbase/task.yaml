@@ -1,0 +1,62 @@
+accessible: true
+author: Séverin Robert
+categories: []
+contact_url: ''
+context: |-
+    Énoncé
+    ------
+    Un étudiant a volé un des raspberry de l'ucl. Une liste de nom des suspects a été rédigée dans le fichier ``student/suspect.txt``. Vous allez devoir trouver le voleur parmi la liste grâce aux indices ci-dessous et grâce à la commande ``grep`` et du Regex (``grep 'Regex' student/suspect.txt``). La liste contient un "Prénom Nom" par ligne.
+
+    Voici les indices trouvés sur le nom du coupable :
+
+    1. Son prénom commence par un 'G'.
+
+    2. Son prénom contient un 'o' ou un 'f'.
+
+    3. Son prénom se termine par un 'd'.
+
+    4. Son nom se termine par un 'e', 'l' ou 'g'.
+
+    **Indice: La fin du prénom se trouve juste avant le premier espace**
+
+    Une fois le suspect trouvé, indiquez son prénom/nom dans le fichier ``student/coupable.txt``. Vous pouvez simplement le faire via la commande ``grep 'Regex' student/suspect.txt >> student/coupable.txt`` pour éviter toute faute de frappe.
+
+    Règles Regex
+    -------------
+    Regex est un interpréteur de syntaxe puissant qui ressemble au suivant : [\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,6}. Cet exemple permet de vérifier la validité d'une adresse mail et est évidemment beaucoup trop compliqué pour débuter. C'est pourquoi nous allons commencer par les bases.
+
+    Le '.' accepte tous les caractères.
+
+    Les '[]' accepte tous les caractères présent dans les crochets.
+
+    Le '^' indique que le caractère suivant doit être en début de ligne.
+
+    Le '$' indique que le caractère précédent doit être en fin de ligne.
+
+    Le '*' indique que le caractère précédent peut être présent de 0 à N fois. Ex.: l'expression '.*' accepte toute les chaine de caractère imaginable.
+
+    **Conseil : Pensez que entre le prénom et le nom il y a un espace ;)**
+
+    Attention Regex est case sensitive donc un 'G' n'accepte pas un 'g' !
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '300'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    ssh_allowed: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+name: Les bases de Regex
+network_grading: false
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

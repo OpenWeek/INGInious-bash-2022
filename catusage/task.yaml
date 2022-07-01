@@ -1,0 +1,39 @@
+accessible: false
+author: ''
+categories: []
+contact_url: ''
+context: |-
+    .. raw:: html
+
+          <script>
+              let index = parseInt(input["@random"][0]*100 )%7;
+              let number = parseInt(input["@random"][1]*1000000 );
+              let dirs = ["numbers" , "Numbers" , "nUmbers" , "nuMbers", "numBers" , "numbErs", "numbeRs"]
+              let dir = dirs[index]
+              document.write("Dans cet exercice  vous aller apprendre à supprimer un fichier. Mais avant il vous faut visualiser le contenu du fichier à l'aide de la commande ``cat`` pour déterminer le fichier du répertoire : \" student/") ;
+              document.write(dir);
+              document.write(" \" contenant le nombre aléatoire: ");
+              document.write(number);
+          </script>
+environment_id: cpp
+environment_parameters:
+    limits:
+        time: '30'
+        hard_time: ''
+        memory: '100'
+    network_grading: 'on'
+    run_cmd: ''
+environment_type: docker
+evaluate: best
+file: ''
+groups: false
+input_random: '3'
+name: Utilisation de cat
+network_grading: false
+problems: {}
+regenerate_input_random: 'on'
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
